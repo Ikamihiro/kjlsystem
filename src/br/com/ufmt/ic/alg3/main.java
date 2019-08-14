@@ -1,6 +1,6 @@
 package br.com.ufmt.ic.alg3;
 
-import br.com.ufmt.ic.alg3.view.Home;
+import br.com.ufmt.ic.alg3.view.Login;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -14,7 +14,7 @@ public class main {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Home tela = new Home();
+        Login tela = new Login();
         tela.setVisible(true);
     }
 }

@@ -1,6 +1,6 @@
-package br.com.ufmt.ic.alg3;
+package alg.jkl.system;
 
-import br.com.ufmt.ic.alg3.view.Login;
+import alg.jkl.system.view.Login;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;

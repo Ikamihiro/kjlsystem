@@ -1,10 +1,10 @@
-package br.com.ufmt.ic.alg3.util;
+package alg.jkl.system.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class bdconfig {
+public class BDconfig {
     private static final String _BDhost = "localhost";
     private static final String _BDname = "jkl";
     private static final String _BDuser = "root";

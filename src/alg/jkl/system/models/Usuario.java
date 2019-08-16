@@ -1,16 +1,32 @@
 package alg.jkl.system.models;
 
-public class Usuario {
+public class Usuario extends Entidade{
     private int id, nivel;
-    private String nome;
     private String senha;
-
-    public int getId() {
-        return id;
+    
+    @Override
+    public boolean verificarDados() {
+        return !(id < 1 || this.getNome().equals("") || senha.equals(""));
     }
-
-    public void setId(int id) {
-        this.id = id;
+    
+    @Override
+    public void alterarDados(String nome) {
+        if(!nome.equals("")) {
+            this.setNome(nome);
+        }
+    }
+    
+    public void alterarDados(String nome, String senha) {
+        if(!nome.equals("") && !senha.equals("")){
+            this.setNome(nome);
+            this.setSenha(senha);
+        }
+    }
+    
+    public void alterarSenha(String senha) {
+        if(!senha.equals("")) {
+            this.setSenha(senha);
+        }
     }
 
     public int getNivel() {
@@ -19,14 +35,6 @@ public class Usuario {
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getSenha() {

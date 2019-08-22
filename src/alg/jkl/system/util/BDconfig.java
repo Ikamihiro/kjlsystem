@@ -8,7 +8,7 @@ public class BDconfig {
     private static final String _BDhost = "localhost";
     private static final String _BDname = "jkl";
     private static final String _BDuser = "root";
-    private static final String _BDpass = "030726";
+    private static final String _BDpass = "jump55";
     
     public static Connection conectar() {
         Connection conexao = null;

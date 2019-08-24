@@ -12,7 +12,7 @@ insert into tb_usuario (nome, senha, nivel_usuario) values ("user", "secret", 1)
 
 CREATE TABLE tb_servicos (
 id_servico int PRIMARY KEY auto_increment,
- descricao_servico varchar(25) not null,
+ descricao_servico text not null,
  categoria_servico varchar(15) not null
 );
 

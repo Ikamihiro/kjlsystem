@@ -17,6 +17,7 @@ public class ListaServicos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbListaServicos = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
@@ -24,6 +25,10 @@ public class ListaServicos extends javax.swing.JFrame {
         javax.swing.JButton btnCadastrarServico = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
+        btnAlterar1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        jButton2.setText("Atualizar");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Serviços");
@@ -34,6 +39,7 @@ public class ListaServicos extends javax.swing.JFrame {
             }
         });
 
+        tbListaServicos.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         tbListaServicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
@@ -56,6 +62,7 @@ public class ListaServicos extends javax.swing.JFrame {
             tbListaServicos.getColumnModel().getColumn(0).setMaxWidth(40);
         }
 
+        jButton1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jButton1.setText("Pesquisar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +70,7 @@ public class ListaServicos extends javax.swing.JFrame {
             }
         });
 
+        btnCadastrarServico.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         btnCadastrarServico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/New-file-icon.png"))); // NOI18N
         btnCadastrarServico.setText("Incluir");
         btnCadastrarServico.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -72,6 +80,7 @@ public class ListaServicos extends javax.swing.JFrame {
             }
         });
 
+        btnExcluir.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/page-remove-icon.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -81,9 +90,22 @@ public class ListaServicos extends javax.swing.JFrame {
             }
         });
 
+        btnAlterar.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/Pencil-icon.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnAlterar1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        btnAlterar1.setText("Atualizar");
+        btnAlterar1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterar1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        jLabel1.setText("Serviços Cadastrados");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,30 +113,38 @@ public class ListaServicos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jTextField1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCadastrarServico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCadastrarServico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAlterar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCadastrarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAlterar1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,13 +211,14 @@ public class ListaServicos extends javax.swing.JFrame {
     private void btnCadastrarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarServicoActionPerformed
         CadastroServico cadastroServicos = new CadastroServico();
         cadastroServicos.setVisible(true);
-       
+    }//GEN-LAST:event_btnCadastrarServicoActionPerformed
+
+    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
         ServicoDAO servicoDAO = new ServicoDAO();
         ArrayList<Servico> listaServicos = servicoDAO.listar();
 
         DefaultTableModel tbModel = (DefaultTableModel) tbListaServicos.getModel();
 
-       
         //Atualizando Servicos
         tbModel.setNumRows(0);
         for (Servico servico: listaServicos) {
@@ -197,9 +228,7 @@ public class ListaServicos extends javax.swing.JFrame {
             linha[2] = servico.getdescricao_servico();
             tbModel.addRow(linha);    
         }
-
-       
-    }//GEN-LAST:event_btnCadastrarServicoActionPerformed
+    }//GEN-LAST:event_btnAlterar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,8 +268,11 @@ public class ListaServicos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnAlterar1;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbListaServicos;

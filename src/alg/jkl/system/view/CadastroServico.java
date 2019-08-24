@@ -117,8 +117,7 @@ public class CadastroServico extends javax.swing.JFrame {
 
     //Botão Salvae
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        String categoria = " ";
-        categoria = cbxCategoria.getSelectedItem().toString();
+        String categoria = cbxCategoria.getSelectedItem().toString();
         
         ServicoDAO servicoDAO = new ServicoDAO();
         Servico novoServico = new Servico();
@@ -129,28 +128,17 @@ public class CadastroServico extends javax.swing.JFrame {
         boolean retorno = servicoDAO.cadastrar(novoServico);
         
         if (retorno == true) {
-            JOptionPane.showMessageDialog(null,
-                    "Aluno Cadastrado com sucesso",
-                    "Sucesso!",
-                    JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Serviço cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
             
             
         }else {
-            JOptionPane.showMessageDialog(
-                    null, 
-                    "Não foi possível cadastrar serviço!", 
-                    "Error!", 
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar serviço!", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
         dispose();
-        
-        
-        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
-        
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**

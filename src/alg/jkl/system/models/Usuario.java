@@ -1,6 +1,6 @@
 package alg.jkl.system.models;
 
-public class Usuario extends Entidade{
+public class Usuario extends Pessoa{
     private int id, nivel;
     private String senha;
     

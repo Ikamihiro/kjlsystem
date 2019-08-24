@@ -1,6 +1,6 @@
 package alg.jkl.system.models;
 
-public abstract class Entidade {
+public abstract class Pessoa {
     private int id;
     private String nome;
     

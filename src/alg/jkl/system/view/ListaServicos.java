@@ -12,6 +12,8 @@ public class ListaServicos extends javax.swing.JFrame {
     public ListaServicos() {
         initComponents();
     }
+    
+    AlteraServico alteraServico = new AlteraServico();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -25,7 +27,7 @@ public class ListaServicos extends javax.swing.JFrame {
         javax.swing.JButton btnCadastrarServico = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
-        btnAlterar1 = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton2.setText("Atualizar");
@@ -94,13 +96,19 @@ public class ListaServicos extends javax.swing.JFrame {
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/Pencil-icon.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        btnAlterar1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        btnAlterar1.setText("Atualizar");
-        btnAlterar1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterar1ActionPerformed(evt);
+                btnAlterarActionPerformed(evt);
+            }
+        });
+
+        btnAtualizar.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        btnAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/Arrow-refresh-icon.png"))); // NOI18N
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
             }
         });
 
@@ -126,7 +134,7 @@ public class ListaServicos extends javax.swing.JFrame {
                             .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCadastrarServico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAlterar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -144,7 +152,7 @@ public class ListaServicos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlterar1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,13 +190,22 @@ public class ListaServicos extends javax.swing.JFrame {
 
     //Remover elemento
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        
+        
         ServicoDAO servicoDAO = new ServicoDAO();
         ArrayList<Servico> listaServicos = servicoDAO.listar();
-        DefaultTableModel tbModel = (DefaultTableModel) tbListaServicos.getModel();
-        int selectedRowIndex = tbListaServicos.getSelectedRow();
         
+        //Me retorna um inteiro com o numero da linha que está selecionada
+        int indiceLinha = tbListaServicos.getSelectedRow();
         
-        boolean retorno = servicoDAO.remover(selectedRowIndex);
+        //Me retorna o código do serviço
+        int codigo = (int) tbListaServicos.getValueAt(indiceLinha, 0);
+        
+        //Exclui a linha do JTable
+        ((DefaultTableModel) tbListaServicos.getModel()).removeRow(tbListaServicos.getSelectedRow());
+        
+        //Exclui a linha do BAnco
+        boolean retorno = servicoDAO.remover(codigo);
         
         if (retorno == true) {
             JOptionPane.showMessageDialog(
@@ -213,22 +230,41 @@ public class ListaServicos extends javax.swing.JFrame {
         cadastroServicos.setVisible(true);
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
-    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        tbListaServicos.addRowSelectionInterval(0, tbListaServicos.getRowCount() - 1);
+        
         ServicoDAO servicoDAO = new ServicoDAO();
         ArrayList<Servico> listaServicos = servicoDAO.listar();
-
+        
         DefaultTableModel tbModel = (DefaultTableModel) tbListaServicos.getModel();
-
-        //Atualizando Servicos
-        tbModel.setNumRows(0);
-        for (Servico servico: listaServicos) {
+        
+        tbModel.setRowCount(0);
+        
+        for (Servico servico : listaServicos){
             Object[] linha = new Object[3];
             linha[0] = servico.getid_servico();
             linha[1] = servico.getcategoria_servico();
             linha[2] = servico.getdescricao_servico();
-            tbModel.addRow(linha);    
+            tbModel.addRow(linha);
         }
-    }//GEN-LAST:event_btnAlterar1ActionPerformed
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        ServicoDAO servicoDAO = new ServicoDAO();
+        ArrayList<Servico> listaServicos = servicoDAO.listar();
+        
+        //Me retorna um inteiro com o numero da linha que está selecionada
+        int indiceLinha = tbListaServicos.getSelectedRow();
+        
+        //Me retorna o código do serviço
+        int codigo = (int) tbListaServicos.getValueAt(indiceLinha, 0);
+        
+        System.out.println("CódigoA: "+codigo);
+        alteraServico.enviaDados(this,codigo);
+        
+        alteraServico.setVisible(true);
+       
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,7 +304,7 @@ public class ListaServicos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnAlterar1;
+    private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

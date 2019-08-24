@@ -5,7 +5,7 @@
  */
 package alg.jkl.system.view;
 
-import alg.jkl.system.models.dao.UsuárioDAO;
+import alg.jkl.system.models.dao.UsuarioDAO;
 import alg.jkl.system.models.Usuario;
 import javax.swing.JOptionPane;
 
@@ -128,7 +128,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        UsuárioDAO controller = new UsuárioDAO();
+        UsuarioDAO controller = new UsuarioDAO();
         String nome = nomeField.getText();
         String senha = senhaField.getText();
         Usuario user = controller.verificar(nome, senha);

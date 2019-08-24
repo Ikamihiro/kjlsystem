@@ -25,7 +25,9 @@ public class ListaServicos extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Serviços");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -53,8 +55,6 @@ public class ListaServicos extends javax.swing.JFrame {
             tbListaServicos.getColumnModel().getColumn(0).setMinWidth(40);
             tbListaServicos.getColumnModel().getColumn(0).setMaxWidth(40);
         }
-
-        jTextField1.setText("jTextField1");
 
         jButton1.setText("Pesquisar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +125,7 @@ public class ListaServicos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

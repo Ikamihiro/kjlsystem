@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UsuárioDAO {    
+public class UsuarioDAO {    
     public Usuario verificar(String nome, String senha) {
         Connection conexao = BDconfig.conectar();
         if(conexao != null) {

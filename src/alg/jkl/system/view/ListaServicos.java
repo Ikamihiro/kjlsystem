@@ -12,6 +12,8 @@ public class ListaServicos extends javax.swing.JFrame {
     public ListaServicos() {
         initComponents();
     }
+    
+    AlteraServico alteraServico = new AlteraServico();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -94,6 +96,11 @@ public class ListaServicos extends javax.swing.JFrame {
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/Pencil-icon.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnAtualizar.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         btnAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/Arrow-refresh-icon.png"))); // NOI18N
@@ -241,6 +248,23 @@ public class ListaServicos extends javax.swing.JFrame {
             tbModel.addRow(linha);
         }
     }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        ServicoDAO servicoDAO = new ServicoDAO();
+        ArrayList<Servico> listaServicos = servicoDAO.listar();
+        
+        //Me retorna um inteiro com o numero da linha que está selecionada
+        int indiceLinha = tbListaServicos.getSelectedRow();
+        
+        //Me retorna o código do serviço
+        int codigo = (int) tbListaServicos.getValueAt(indiceLinha, 0);
+        
+        System.out.println("CódigoA: "+codigo);
+        alteraServico.enviaDados(this,codigo);
+        
+        alteraServico.setVisible(true);
+       
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments

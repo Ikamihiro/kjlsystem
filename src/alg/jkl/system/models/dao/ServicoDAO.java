@@ -87,6 +87,39 @@ public class ServicoDAO {
         return false;
     }
     
+    //Método de alteração
+    
+    public ArrayList alterar (int codigo) {
+        System.out.println("CódigoC: "+codigo);
+        ArrayList<Servico> listaALteraServico = null;
+        Connection conexao = BDconfig.conectar();
+        
+        if (conexao != null){
+            try {
+                Statement stm = conexao.createStatement();
+                System.out.println("CódigoD: "+codigo);
+                String sqlSelect = "SELECT * FROM tb_servicos WHERE id_servico = "+codigo;
+                
+                ResultSet rs = stm.executeQuery(sqlSelect);
+                
+                if (rs.isBeforeFirst()){
+                    listaALteraServico = new ArrayList();
+                    Servico servico;
+                        servico = new Servico();
+                        servico.setid_servico(rs.getInt("id_servico"));
+                        servico.setcategoria_servico(rs.getString("categoria_servico"));
+                        servico.setdescricao_servico(rs.getString("descricao_servico"));
+                        listaALteraServico.add(servico);
+                }
+                
+                                
+            } catch (SQLException ex) {
+                System.out.println("Erro de leitura :(");
+            }
+        }
+        return listaALteraServico;
+        
+    }
 
     
 }

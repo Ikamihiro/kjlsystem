@@ -136,6 +136,11 @@ public class Home extends javax.swing.JFrame {
         profissionaisCall.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         profissionaisCall.setForeground(new java.awt.Color(204, 204, 204));
         profissionaisCall.setText("Profissionais");
+        profissionaisCall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profissionaisCallActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelEntidadesLayout = new javax.swing.GroupLayout(panelEntidades);
         panelEntidades.setLayout(panelEntidadesLayout);
@@ -271,6 +276,12 @@ public class Home extends javax.swing.JFrame {
         ListaServicos listaServicos = new ListaServicos();
         listaServicos.setVisible(true);
     }//GEN-LAST:event_servicosCallActionPerformed
+
+    private void profissionaisCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profissionaisCallActionPerformed
+        // TODO add your handling code here:
+        Profissionais profissional = new Profissionais();
+        profissional.setVisible(true);
+    }//GEN-LAST:event_profissionaisCallActionPerformed
 
     /**
      * @param args the command line arguments

@@ -19,7 +19,7 @@ public class ServicoDAO {
         if (conexao != null){
             try {
                 Statement stm = conexao.createStatement();
-                String sqlSelect = "SELECT * FROM tb_servicos ORDER BY descricao_servico";
+                String sqlSelect = "SELECT * FROM tb_servicos ORDER BY id_servico";
                 
                 ResultSet rs = stm.executeQuery(sqlSelect);
                 
@@ -86,5 +86,7 @@ public class ServicoDAO {
         
         return false;
     }
+    
+
     
 }

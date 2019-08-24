@@ -109,6 +109,11 @@ public class Home extends javax.swing.JFrame {
         servicosCall.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         servicosCall.setForeground(new java.awt.Color(204, 204, 204));
         servicosCall.setText("Serviços");
+        servicosCall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                servicosCallActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelAcoesLayout = new javax.swing.GroupLayout(panelAcoes);
         panelAcoes.setLayout(panelAcoesLayout);
@@ -397,6 +402,11 @@ public class Home extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void servicosCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicosCallActionPerformed
+        ListaServicos listaServicos = new ListaServicos();
+        listaServicos.setVisible(true);
+    }//GEN-LAST:event_servicosCallActionPerformed
 
     /**
      * @param args the command line arguments

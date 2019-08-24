@@ -6,8 +6,8 @@ create table tb_usuario (
     nivel_usuario int not null
 );
 
- 
 insert into tb_usuario (nome, senha, nivel_usuario) values ("user", "secret", 1);
+
 
 
 CREATE TABLE tb_servicos (
@@ -21,3 +21,19 @@ INSERT INTO tb_servicos (descricao_servico, categoria_servico) VALUES
  ("limpeza", "hardware"),
  ("troca peça", "hardware"),
  ("app", "sofware");
+
+
+
+CREATE TABLE tb_profissionais (
+cpf varchar (11) PRIMARY KEY not null,
+nome varchar (50) not null,
+funcao varchar(50) not null
+);
+
+INSERT INTO tb_profissionais (cpf, nome, funcao) values
+("3019", "Joaquim", "dev-front"),
+("3007", "Paulo", "dev-back"),
+("3012", "Claudia", "dev-front"),
+("3015", "Rui", "analista"),
+("3013", "Otavio", "tecnico-hardware"),
+("3002", "Joana", "analista");

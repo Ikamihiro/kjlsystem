@@ -279,7 +279,7 @@ public class Home extends javax.swing.JFrame {
 
     private void profissionaisCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profissionaisCallActionPerformed
         // TODO add your handling code here:
-        Profissionais profissional = new Profissionais();
+        ListaProfissionais profissional = new ListaProfissionais();
         profissional.setVisible(true);
     }//GEN-LAST:event_profissionaisCallActionPerformed
 

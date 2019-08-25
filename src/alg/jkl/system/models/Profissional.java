@@ -1,16 +1,16 @@
 package alg.jkl.system.models;
 
 public class Profissional { 
-    private String cpf;
+    private int id_profissional;
     private String nome;
     private String funcao;
 
-    public String getCpf() {
-        return cpf;
+    public int getId_profissional() {
+        return id_profissional;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setId_profissional(int id_profissional) {
+        this.id_profissional = id_profissional;
     }
 
     public String getNome() {

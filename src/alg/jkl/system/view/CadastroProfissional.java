@@ -36,7 +36,7 @@ public class CadastroProfissional extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        cpfProfissional = new javax.swing.JTextField();
+        idProfissional = new javax.swing.JTextField();
         nomeProfissional = new javax.swing.JTextField();
         funcaoProfissional = new javax.swing.JTextField();
         Bt_Cancelar = new javax.swing.JButton();
@@ -45,7 +45,7 @@ public class CadastroProfissional extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        jLabel1.setText("CPF:");
+        jLabel1.setText("Id_Profissional:");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jLabel2.setText("Nome:");
@@ -53,9 +53,9 @@ public class CadastroProfissional extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jLabel3.setText("Função:");
 
-        cpfProfissional.addActionListener(new java.awt.event.ActionListener() {
+        idProfissional.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpfProfissionalActionPerformed(evt);
+                idProfissionalActionPerformed(evt);
             }
         });
 
@@ -79,18 +79,17 @@ public class CadastroProfissional extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomeProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(Bt_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                            .addComponent(Bt_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cpfProfissional, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(funcaoProfissional, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(nomeProfissional, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Bt_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(Bt_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(funcaoProfissional))
                 .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,7 +98,7 @@ public class CadastroProfissional extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cpfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -118,16 +117,16 @@ public class CadastroProfissional extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cpfProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfProfissionalActionPerformed
+    private void idProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idProfissionalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cpfProfissionalActionPerformed
+    }//GEN-LAST:event_idProfissionalActionPerformed
 
     private void Bt_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_SalvarActionPerformed
         // TODO add your handling code here:
         Profissional profissional = new Profissional();
         ProfissionalDAO profissionalDao = new ProfissionalDAO();
         
-        profissional.setCpf(cpfProfissional.getText());
+        profissional.setId_profissional(Integer.parseInt(idProfissional.getText())); 
         profissional.setNome(nomeProfissional.getText());
         profissional.setFuncao(funcaoProfissional.getText());
         
@@ -185,8 +184,8 @@ public class CadastroProfissional extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bt_Cancelar;
     private javax.swing.JButton Bt_Salvar;
-    private javax.swing.JTextField cpfProfissional;
     private javax.swing.JTextField funcaoProfissional;
+    private javax.swing.JTextField idProfissional;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

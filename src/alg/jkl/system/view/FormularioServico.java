@@ -1,26 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package alg.jkl.system.view;
-
 import alg.jkl.system.models.Servico;
 import alg.jkl.system.models.dao.ServicoDAO;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class CadastroServico extends javax.swing.JFrame {
-
-    public CadastroServico() {
-        initComponents();
-        
-        cbxCategoria.removeAllItems();
-        cbxCategoria.addItem("Hardware");
-        cbxCategoria.addItem("Software");
-        
-        
+public class FormularioServico extends javax.swing.JFrame {
+    
+    //A flag serve para definir se a classe vai ser usada para cadastrar ou alterar
+    //Aqui ele pega a flag passada na ListaServicos
+    int newflag = 0;
+    public void passaflag (int flag){
+        newflag = flag;
     }
-
+    
+    public FormularioServico() {
+        initComponents();  
+        cbxCategoria.removeAllItems();
+    }
+    
+    //Metodo que passa o item para ser alterado
+        ArrayList<Servico> retorno = null;
+    
+    //Pega o item da lista a ser alterado e o seu id_servico
+    int newcode = 0;
+    public void enviaDados(ArrayList alteraDados, int codigo){
+        ServicoDAO servicoDAO = new ServicoDAO();
+        retorno = servicoDAO.retornaDados(codigo);
+        newcode = codigo;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,6 +44,11 @@ public class CadastroServico extends javax.swing.JFrame {
         setTitle("Cadastro de Serviços");
         setBackground(new java.awt.Color(51, 51, 51));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,66 +130,110 @@ public class CadastroServico extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescricaoActionPerformed
 
-    //Botão Salvae
+    //Botão Salvar
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    
+    //Se o flag == 1, ele vai cadastrar
+    if (newflag == 1){
+            String categoria = cbxCategoria.getSelectedItem().toString();
+
+            ServicoDAO servicoDAO = new ServicoDAO();
+            Servico novoServico = new Servico();
+
+            novoServico.setcategoria_servico(categoria);
+            novoServico.setdescricao_servico(txtDescricao.getText());
+
+            boolean retorno = servicoDAO.cadastrar(novoServico);
+
+            if (retorno == true) {
+                JOptionPane.showMessageDialog(null, "Serviço cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+
+
+            }else {
+                JOptionPane.showMessageDialog(null, "Não foi possível cadastrar serviço!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            }
+            dispose();
+    //Se o flag == 2, ele vai alterar
+    }else{
         String categoria = cbxCategoria.getSelectedItem().toString();
-        
-        ServicoDAO servicoDAO = new ServicoDAO();
-        Servico novoServico = new Servico();
-        
-        novoServico.setcategoria_servico(categoria);
-        novoServico.setdescricao_servico(txtDescricao.getText());
-        
-        boolean retorno = servicoDAO.cadastrar(novoServico);
-        
-        if (retorno == true) {
-            JOptionPane.showMessageDialog(null, "Serviço cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-            
-            
-        }else {
-            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar serviço!", "Erro!", JOptionPane.ERROR_MESSAGE);
-        }
-        dispose();
+
+            ServicoDAO servicoDAO = new ServicoDAO();
+            Servico servicoAlterado = new Servico();
+
+            servicoAlterado.setcategoria_servico(categoria);
+            servicoAlterado.setdescricao_servico(txtDescricao.getText());
+
+            boolean retorno = servicoDAO.alterar(servicoAlterado, newcode);
+
+            if (retorno == true) {
+                JOptionPane.showMessageDialog(null, "Serviço alterado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+
+
+            }else {
+                JOptionPane.showMessageDialog(null, "Não foi possível alterar serviço!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            }
+            dispose();
+    }
+       
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    //Botão Cancelar
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    //Ao abrir a janela de Formulario
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        //Se o flag == 1, o Dropdown vai aparecer as opções 
+        if (newflag == 1){
+            cbxCategoria.addItem("Hardware");
+            cbxCategoria.addItem("Software");    
+        }else{
+            //#####Gambiarra
+            for (Servico servico : retorno){
+                cbxCategoria.addItem(servico.getcategoria_servico());
+                txtDescricao.setText(servico.getdescricao_servico());
+                if (servico.getcategoria_servico() == "Hardware"){
+                    cbxCategoria.addItem("Software");
+                }else{
+                    cbxCategoria.addItem("Hardware");
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroServico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroServico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroServico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroServico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+    }//GEN-LAST:event_formWindowOpened
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastroServico().setVisible(true);
+public static void main(String args[]) {
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+     * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        });
+        }
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(FormularioServico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(FormularioServico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(FormularioServico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(FormularioServico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new FormularioServico().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

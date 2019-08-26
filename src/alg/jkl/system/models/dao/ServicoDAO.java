@@ -87,11 +87,10 @@ public class ServicoDAO {
         return false;
     }
     
-    //Método de alteração
-    
-    public ArrayList alterar (int codigo) {
-        System.out.println("CódigoC: "+codigo);
-        ArrayList<Servico> listaALteraServico = null;
+    //Método de alteração (parte 1)
+    //Primeiro ele precisa retornar os dados de acordo com o código que foi selecionado
+    public ArrayList retornaDados (int codigo) {
+        ArrayList<Servico> listaAlteraServico = null;
         Connection conexao = BDconfig.conectar();
         
         if (conexao != null){
@@ -103,13 +102,15 @@ public class ServicoDAO {
                 ResultSet rs = stm.executeQuery(sqlSelect);
                 
                 if (rs.isBeforeFirst()){
-                    listaALteraServico = new ArrayList();
+                    listaAlteraServico = new ArrayList();
                     Servico servico;
+                        while (rs.next()){
                         servico = new Servico();
                         servico.setid_servico(rs.getInt("id_servico"));
                         servico.setcategoria_servico(rs.getString("categoria_servico"));
                         servico.setdescricao_servico(rs.getString("descricao_servico"));
-                        listaALteraServico.add(servico);
+                        listaAlteraServico.add(servico);
+                    }  
                 }
                 
                                 
@@ -117,9 +118,67 @@ public class ServicoDAO {
                 System.out.println("Erro de leitura :(");
             }
         }
-        return listaALteraServico;
+        return listaAlteraServico;
         
     }
+    //Aqui ele altera de fato no banco de dados
+    public boolean alterar (Servico novoServico, int codigo) {
+        Connection conexao = BDconfig.conectar();
+        
+        if (conexao != null) {
+            try {
+                PreparedStatement pStm
+                = conexao.prepareStatement("UPDATE tb_servicos SET categoria_servico = ?, descricao_servico = ? WHERE id_servico = ?");
+                
+                System.out.println("Codigo aqui é "+codigo);
+                pStm.setString(1,novoServico.getcategoria_servico());
+                pStm.setString(2,novoServico.getdescricao_servico());
+                pStm.setString(3,Integer.toString(codigo));
+                
+                int linhas = pStm.executeUpdate();
+                
+                return true;                
+                
+            } catch (Exception ex) {
+                System.out.println("Erro ao ALTERAR novo serviço: "+ex.getMessage());
+            }
+        }
+        
+        return false;
+    }
+    
+    public ArrayList<Servico> pesquisar(String descricao_servico) {
+        ArrayList<Servico> pesquisaServicos = null;
+        
+        Connection conexao = BDconfig.conectar();
+        if (conexao != null){
+            try {
+                Statement stm = conexao.createStatement();
+                String sqlSelect = "SELECT * FROM tb_servicos WHERE descricao_servico = '"+descricao_servico+"'";
+                
+                ResultSet rs = stm.executeQuery(sqlSelect);
+                
+                if (rs.isBeforeFirst()){
+                   pesquisaServicos = new ArrayList();
+                   Servico servico;
+                    while (rs.next()){
+                        servico = new Servico();
+                        servico.setid_servico(rs.getInt("id_servico"));
+                        servico.setcategoria_servico(rs.getString("categoria_servico"));
+                        servico.setdescricao_servico(rs.getString("descricao_servico"));
+                        pesquisaServicos.add(servico);
+                    }    
+                }
+                                
+            } catch (SQLException ex) {
+                System.out.println("Erro de leitura :(");
+            }
+        }
+        return pesquisaServicos;
+    }
+    
+    
 
     
 }
+

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package alg.jkl.system.view;
 
 import alg.jkl.system.models.Servico;
@@ -11,44 +6,27 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class AlteraServico extends javax.swing.JFrame {
-
     private ListaServicos alteraDados;
-    
     public AlteraServico() {
-        
         initComponents();
             
         
         cbxCategoria.removeAllItems();
-        cbxCategoria.addItem("Hardware");
-        cbxCategoria.addItem("Software");
-        
-        
+                
     }
     
     public void enviaDados(ListaServicos alteraDados, int codigo){
-        System.out.println("CódigoB: "+codigo);
         ServicoDAO servicoDAO = new ServicoDAO();
-        ArrayList retorno = servicoDAO.alterar(codigo);
         
-        if (retorno != null) {
-            JOptionPane.showMessageDialog(
-                    null, 
-                    "Servico removido com sucesso!", 
-                    "Sucesso!", 
-                    JOptionPane.INFORMATION_MESSAGE);
-        }
-        else {
-            JOptionPane.showMessageDialog(
-                    null, 
-                    "Não foi possível remover o servico!", 
-                    "Error!", 
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        
+        ArrayList<Servico> retorno = servicoDAO.retornaDados(codigo);
+    
+        for (Servico servico : retorno){
+            int codigoservico = servico.getid_servico();
+            txtDescricao.setText(servico.getdescricao_servico());
+            cbxCategoria.addItem(servico.getcategoria_servico());
+        }   
     }
     
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -147,7 +125,7 @@ public class AlteraServico extends javax.swing.JFrame {
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescricaoActionPerformed
-
+    
     //Botão Salvae
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         String categoria = cbxCategoria.getSelectedItem().toString();
@@ -158,12 +136,12 @@ public class AlteraServico extends javax.swing.JFrame {
         novoServico.setcategoria_servico(categoria);
         novoServico.setdescricao_servico(txtDescricao.getText());
         
+        
         boolean retorno = servicoDAO.cadastrar(novoServico);
         
         if (retorno == true) {
             JOptionPane.showMessageDialog(null, "Serviço cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-            
-            
+                        
         }else {
             JOptionPane.showMessageDialog(null, "Não foi possível cadastrar serviço!", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -175,7 +153,10 @@ public class AlteraServico extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       
         
+        
+        System.out.println("Retorno: ");
         
         
     }//GEN-LAST:event_formWindowOpened

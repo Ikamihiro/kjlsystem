@@ -7,13 +7,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ListaServicos extends javax.swing.JFrame {
-
-
     public ListaServicos() {
         initComponents();
     }
     
-    AlteraServico alteraServico = new AlteraServico();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -22,8 +19,8 @@ public class ListaServicos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbListaServicos = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtPesquisa = new javax.swing.JTextField();
+        btnPesquisa = new javax.swing.JButton();
         javax.swing.JButton btnCadastrarServico = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
@@ -64,11 +61,11 @@ public class ListaServicos extends javax.swing.JFrame {
             tbListaServicos.getColumnModel().getColumn(0).setMaxWidth(40);
         }
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        jButton1.setText("Pesquisar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisa.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        btnPesquisa.setText("Pesquisar");
+        btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPesquisaActionPerformed(evt);
             }
         });
 
@@ -126,9 +123,9 @@ public class ListaServicos extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jTextField1)
+                                .addComponent(txtPesquisa)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
+                                .addComponent(btnPesquisa)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -155,8 +152,8 @@ public class ListaServicos extends javax.swing.JFrame {
                         .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
+                            .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPesquisa))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -166,9 +163,33 @@ public class ListaServicos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String pesquisar = txtPesquisa.getText(); 
+        System.out.println("nome:"+pesquisar+"oi");
+        
+        String vazia = "";
+        if (pesquisar.isEmpty()) {
+            System.out.println("Caiu");
+            JOptionPane.showMessageDialog(null, "Valor Nulo", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }else{
+        
+            ServicoDAO servicoDAO = new ServicoDAO();
+            ArrayList<Servico> pesquisaServicos = servicoDAO.pesquisar(pesquisar);
+
+            DefaultTableModel tbModel = (DefaultTableModel) tbListaServicos.getModel();
+
+            tbModel.setRowCount(0);
+
+            for (Servico servico : pesquisaServicos){
+                Object[] linha = new Object[3];
+                linha[0] = servico.getid_servico();
+                linha[1] = servico.getcategoria_servico();
+                linha[2] = servico.getdescricao_servico();
+                tbModel.addRow(linha);
+            }
+        }
+    }//GEN-LAST:event_btnPesquisaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         ServicoDAO servicoDAO = new ServicoDAO();
@@ -226,8 +247,16 @@ public class ListaServicos extends javax.swing.JFrame {
 
     //Cadastrar ítem
     private void btnCadastrarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarServicoActionPerformed
-        CadastroServico cadastroServicos = new CadastroServico();
-        cadastroServicos.setVisible(true);
+        try {
+            int flagcadastrar = 1;
+            FormularioServico formularioServico = new FormularioServico();
+            formularioServico.setVisible(true);
+            formularioServico.passaflag(flagcadastrar);
+        } catch (Exception e) {
+            System.out.println("Erro no cadastro");
+        }
+        
+        
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
@@ -251,18 +280,30 @@ public class ListaServicos extends javax.swing.JFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         ServicoDAO servicoDAO = new ServicoDAO();
-        ArrayList<Servico> listaServicos = servicoDAO.listar();
         
         //Me retorna um inteiro com o numero da linha que está selecionada
         int indiceLinha = tbListaServicos.getSelectedRow();
         
-        //Me retorna o código do serviço
+        //Vai aparecer uma mensagem se o usuário não selecionar uma linha
+        if (indiceLinha < 0){
+            JOptionPane.showMessageDialog(null, "Você precisa selecionar uma linha", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+
+        //Me retorna o codigo do serviço
         int codigo = (int) tbListaServicos.getValueAt(indiceLinha, 0);
         
-        System.out.println("CódigoA: "+codigo);
-        alteraServico.enviaDados(this,codigo);
+        //Me retorna a lista selecionada
+        ArrayList<Servico> retorno = servicoDAO.retornaDados(codigo);
         
-        alteraServico.setVisible(true);
+        int flagalterar = 2;
+        FormularioServico formularioServico = new FormularioServico();
+        
+        formularioServico.enviaDados(retorno, codigo);
+        formularioServico.setVisible(true);
+        formularioServico.passaflag(flagalterar);
+     
+        
+        
        
     }//GEN-LAST:event_btnAlterarActionPerformed
 
@@ -306,11 +347,15 @@ public class ListaServicos extends javax.swing.JFrame {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnPesquisa;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbListaServicos;
+    private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
+
+    private void passaflag(int flag) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -93,8 +93,7 @@ public class ProfissionalDAO {
                 System.out.println("Erro cadastrando profissional: "+ex.getMessage());
             }
         }
-        return false;
-         
+        return false;     
     }
     
     
@@ -127,5 +126,25 @@ public class ProfissionalDAO {
         }
         return pesquisaProfissionais;
     }
+    
+    public boolean alterar (int id, String alterarFuncao) {
+        Connection conexao = BDconfig.conectar();
+        
+        if (conexao != null) {
+            try {
+                PreparedStatement pStm
+                = conexao.prepareStatement("UPDATE tb_profissionais SET funcao=? WHERE id_profissional = "+id);
+           
+                pStm.setString(1,alterarFuncao);
+                int linhas = pStm.executeUpdate();
+                
+                return true;                
+                
+            } catch (Exception ex) {
+                System.out.println("Erro ao altetar dados do profissional: "+ex.getMessage());
+            }
+        } 
+        return false;
+    }   
 
 }

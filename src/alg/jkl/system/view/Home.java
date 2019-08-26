@@ -42,20 +42,7 @@ public class Home extends javax.swing.JFrame {
         panelUsuarios = new javax.swing.JPanel();
         usuariosCall = new javax.swing.JButton();
         admCall = new javax.swing.JButton();
-        panelDadosAcoes = new javax.swing.JPanel();
-        servicosLabel = new javax.swing.JLabel();
-        servicosDados = new javax.swing.JLabel();
-        contratosLabel = new javax.swing.JLabel();
-        contratosDados = new javax.swing.JLabel();
-        panelDadosUsuarios = new javax.swing.JPanel();
-        usuariosLabel = new javax.swing.JLabel();
-        usuariosDados = new javax.swing.JLabel();
-        panelDadosEntidades = new javax.swing.JPanel();
-        clientesLabel = new javax.swing.JLabel();
-        clientesDados = new javax.swing.JLabel();
-        profissionaisLabel = new javax.swing.JLabel();
-        profissionaisDados = new javax.swing.JLabel();
-        atualizarDados = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -123,7 +110,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(servicosCall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(contratosCall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(contratosCall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelAcoesLayout.setVerticalGroup(
@@ -149,6 +136,11 @@ public class Home extends javax.swing.JFrame {
         profissionaisCall.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         profissionaisCall.setForeground(new java.awt.Color(204, 204, 204));
         profissionaisCall.setText("Profissionais");
+        profissionaisCall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profissionaisCallActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelEntidadesLayout = new javax.swing.GroupLayout(panelEntidades);
         panelEntidades.setLayout(panelEntidadesLayout);
@@ -179,11 +171,21 @@ public class Home extends javax.swing.JFrame {
         usuariosCall.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         usuariosCall.setForeground(new java.awt.Color(204, 204, 204));
         usuariosCall.setText("Usuário");
+        usuariosCall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuariosCallActionPerformed(evt);
+            }
+        });
 
         admCall.setBackground(new java.awt.Color(0, 102, 255));
         admCall.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         admCall.setForeground(new java.awt.Color(204, 204, 204));
         admCall.setText("Administrar");
+        admCall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admCallActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelUsuariosLayout = new javax.swing.GroupLayout(panelUsuarios);
         panelUsuarios.setLayout(panelUsuariosLayout);
@@ -193,7 +195,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(usuariosCall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(admCall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(admCall, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelUsuariosLayout.setVerticalGroup(
@@ -206,207 +208,80 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelDadosAcoes.setBackground(new java.awt.Color(51, 51, 51));
-        panelDadosAcoes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total de Serviços e Contratos ativos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-        panelDadosAcoes.setForeground(new java.awt.Color(204, 204, 204));
-
-        servicosLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        servicosLabel.setForeground(new java.awt.Color(204, 204, 204));
-        servicosLabel.setText("Total de Serviços:");
-
-        servicosDados.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        servicosDados.setForeground(new java.awt.Color(204, 204, 204));
-        servicosDados.setText("30 Serviços cadastrados ativos");
-        servicosDados.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        contratosLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        contratosLabel.setForeground(new java.awt.Color(204, 204, 204));
-        contratosLabel.setText("Total de Contratos:");
-
-        contratosDados.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        contratosDados.setForeground(new java.awt.Color(204, 204, 204));
-        contratosDados.setText("30 Serviços cadastrados ativos");
-        contratosDados.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        javax.swing.GroupLayout panelDadosAcoesLayout = new javax.swing.GroupLayout(panelDadosAcoes);
-        panelDadosAcoes.setLayout(panelDadosAcoesLayout);
-        panelDadosAcoesLayout.setHorizontalGroup(
-            panelDadosAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDadosAcoesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDadosAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contratosLabel)
-                    .addComponent(servicosLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDadosAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(servicosDados, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contratosDados, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelDadosAcoesLayout.setVerticalGroup(
-            panelDadosAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDadosAcoesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDadosAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(servicosLabel)
-                    .addComponent(servicosDados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelDadosAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contratosLabel)
-                    .addComponent(contratosDados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
-        );
-
-        panelDadosUsuarios.setBackground(new java.awt.Color(51, 51, 51));
-        panelDadosUsuarios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total de Usuário cadastrados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-        panelDadosUsuarios.setForeground(new java.awt.Color(204, 204, 204));
-
-        usuariosLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        usuariosLabel.setForeground(new java.awt.Color(204, 204, 204));
-        usuariosLabel.setText("Total de Usuários:");
-
-        usuariosDados.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        usuariosDados.setForeground(new java.awt.Color(204, 204, 204));
-        usuariosDados.setText("30 Usuários cadastrados");
-        usuariosDados.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        javax.swing.GroupLayout panelDadosUsuariosLayout = new javax.swing.GroupLayout(panelDadosUsuarios);
-        panelDadosUsuarios.setLayout(panelDadosUsuariosLayout);
-        panelDadosUsuariosLayout.setHorizontalGroup(
-            panelDadosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDadosUsuariosLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(usuariosLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usuariosDados, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelDadosUsuariosLayout.setVerticalGroup(
-            panelDadosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDadosUsuariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDadosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usuariosLabel)
-                    .addComponent(usuariosDados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        panelDadosEntidades.setBackground(new java.awt.Color(51, 51, 51));
-        panelDadosEntidades.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total de Entidades ativas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-        panelDadosEntidades.setForeground(new java.awt.Color(204, 204, 204));
-
-        clientesLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        clientesLabel.setForeground(new java.awt.Color(204, 204, 204));
-        clientesLabel.setText("Total de Clientes:");
-
-        clientesDados.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        clientesDados.setForeground(new java.awt.Color(204, 204, 204));
-        clientesDados.setText("30 Clientes cadastrados ativos");
-        clientesDados.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        profissionaisLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        profissionaisLabel.setForeground(new java.awt.Color(204, 204, 204));
-        profissionaisLabel.setText("Total de Profissionais:");
-
-        profissionaisDados.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        profissionaisDados.setForeground(new java.awt.Color(204, 204, 204));
-        profissionaisDados.setText("30 Profissionais cadastrados ativos");
-        profissionaisDados.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        javax.swing.GroupLayout panelDadosEntidadesLayout = new javax.swing.GroupLayout(panelDadosEntidades);
-        panelDadosEntidades.setLayout(panelDadosEntidadesLayout);
-        panelDadosEntidadesLayout.setHorizontalGroup(
-            panelDadosEntidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDadosEntidadesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDadosEntidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(profissionaisLabel)
-                    .addComponent(clientesLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDadosEntidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(clientesDados, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(profissionaisDados, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelDadosEntidadesLayout.setVerticalGroup(
-            panelDadosEntidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDadosEntidadesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDadosEntidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clientesLabel)
-                    .addComponent(clientesDados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelDadosEntidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(profissionaisLabel)
-                    .addComponent(profissionaisDados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
-        );
-
-        atualizarDados.setBackground(new java.awt.Color(0, 102, 255));
-        atualizarDados.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        atualizarDados.setForeground(new java.awt.Color(204, 204, 204));
-        atualizarDados.setText("Atualizar Dados");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/logo_semfundo.png"))); // NOI18N
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelAcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelEntidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelDadosAcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelDadosUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelDadosEntidades, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(atualizarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(panelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelAcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelEntidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(81, 81, 81))))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelAcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelDadosAcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(panelDadosEntidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelDadosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(atualizarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(panelAcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelEntidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(panelEntidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(panelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 35, Short.MAX_VALUE))))
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel1)))
+                .addGap(18, 18, 18)
+                .addComponent(panelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void admCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admCallActionPerformed
+        UsuarioAdmin admin = new UsuarioAdmin();
+        admin.setVisible(true);
+    }//GEN-LAST:event_admCallActionPerformed
+
+    private void usuariosCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosCallActionPerformed
+        CadastroUsuario cadastrouser = new CadastroUsuario();
+        cadastrouser.setVisible(true);
+    }//GEN-LAST:event_usuariosCallActionPerformed
+
     private void servicosCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicosCallActionPerformed
         ListaServicos listaServicos = new ListaServicos();
         listaServicos.setVisible(true);
     }//GEN-LAST:event_servicosCallActionPerformed
+
+    private void profissionaisCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profissionaisCallActionPerformed
+        // TODO add your handling code here:
+        ListaProfissionais profissional = new ListaProfissionais();
+        profissional.setVisible(true);
+    }//GEN-LAST:event_profissionaisCallActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,33 +321,20 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton admCall;
-    private javax.swing.JButton atualizarDados;
     private javax.swing.JButton clientesCall;
-    private javax.swing.JLabel clientesDados;
-    private javax.swing.JLabel clientesLabel;
     private javax.swing.JButton contratosCall;
-    private javax.swing.JLabel contratosDados;
-    private javax.swing.JLabel contratosLabel;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelAcoes;
-    private javax.swing.JPanel panelDadosAcoes;
-    private javax.swing.JPanel panelDadosEntidades;
-    private javax.swing.JPanel panelDadosUsuarios;
     private javax.swing.JPanel panelEntidades;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JPanel panelUsuarios;
     private javax.swing.JButton profissionaisCall;
-    private javax.swing.JLabel profissionaisDados;
-    private javax.swing.JLabel profissionaisLabel;
     private javax.swing.JButton servicosCall;
-    private javax.swing.JLabel servicosDados;
-    private javax.swing.JLabel servicosLabel;
     private javax.swing.JButton usuariosCall;
-    private javax.swing.JLabel usuariosDados;
-    private javax.swing.JLabel usuariosLabel;
     // End of variables declaration//GEN-END:variables
 }

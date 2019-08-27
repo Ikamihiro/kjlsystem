@@ -7,7 +7,6 @@ package alg.jkl.system.models.dao;
 
 import alg.jkl.system.models.Profissional;
 import alg.jkl.system.util.BDconfig;
-import alg.jkl.system.view.ListaProfissionais;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

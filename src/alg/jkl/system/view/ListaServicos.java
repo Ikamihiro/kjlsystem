@@ -251,7 +251,6 @@ public class ListaServicos extends javax.swing.JFrame {
             int flagcadastrar = 1;
             FormularioServico formularioServico = new FormularioServico();
             formularioServico.setVisible(true);
-            formularioServico.passaflag(flagcadastrar);
         } catch (Exception e) {
             System.out.println("Erro no cadastro");
         }
@@ -260,8 +259,7 @@ public class ListaServicos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        tbListaServicos.addRowSelectionInterval(0, tbListaServicos.getRowCount() - 1);
-        
+
         ServicoDAO servicoDAO = new ServicoDAO();
         ArrayList<Servico> listaServicos = servicoDAO.listar();
         
@@ -297,13 +295,9 @@ public class ListaServicos extends javax.swing.JFrame {
         
         int flagalterar = 2;
         FormularioServico formularioServico = new FormularioServico();
-        
+        formularioServico.setAtuacao(Acao.ALTERAR);
         formularioServico.enviaDados(retorno, codigo);
         formularioServico.setVisible(true);
-        formularioServico.passaflag(flagalterar);
-     
-        
-        
        
     }//GEN-LAST:event_btnAlterarActionPerformed
 
@@ -355,7 +349,4 @@ public class ListaServicos extends javax.swing.JFrame {
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 
-    private void passaflag(int flag) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

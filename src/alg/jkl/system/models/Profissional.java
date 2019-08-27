@@ -2,6 +2,7 @@ package alg.jkl.system.models;
 
 public class Profissional { 
     private int id_profissional;
+    private String cpf;
     private String nome;
     private String funcao;
     
@@ -13,6 +14,14 @@ public class Profissional {
         this.id_profissional = id_profissional;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
     public String getNome() {
         return nome;
     }

@@ -3,10 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/home/leiciane/NetBeansProjects/kjlsystem/src/alg/jkl/system/models/dao/ServicoDAO.java</file>
+            <file>file:/home/leiciane/NetBeansProjects/kjlsystem/src/alg/jkl/system/models/Pessoa.java</file>
+            <file>file:/home/leiciane/NetBeansProjects/kjlsystem/src/alg/jkl/system/view/ListaProfissionais.java</file>
+            <file>file:/home/leiciane/NetBeansProjects/kjlsystem/src/alg/jkl/system/view/FormularioServico.java</file>
+            <file>file:/home/leiciane/NetBeansProjects/kjlsystem/src/alg/jkl/system/view/ListaServicos.java</file>
+            <file>file:/home/leiciane/NetBeansProjects/kjlsystem/src/alg/jkl/system/models/Profissional.java</file>
+            <file>file:/home/leiciane/NetBeansProjects/kjlsystem/src/alg/jkl/system/models/dao/ProfissionalDAO.java</file>
+            <file>file:/home/leiciane/NetBeansProjects/kjlsystem/src/alg/jkl/system/view/FormularioProfissional.java</file>
+=======
             <file>file:/home/joao/NetBeansProjects/kjlsystem/src/alg/jkl/system/models/dao/ProfissionalDAO.java</file>
             <file>file:/home/joao/NetBeansProjects/kjlsystem/src/alg/jkl/system/models/Usuario.java</file>
             <file>file:/home/joao/NetBeansProjects/kjlsystem/src/alg/jkl/system/models/dao/DAOPessoa.java</file>
             <file>file:/home/joao/NetBeansProjects/kjlsystem/src/alg/jkl/system/models/dao/UsuarioDAO.java</file>
+>>>>>>> master
         </group>
     </open-files>
 </project-private>

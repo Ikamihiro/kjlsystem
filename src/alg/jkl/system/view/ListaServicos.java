@@ -255,10 +255,10 @@ public class ListaServicos extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Erro no cadastro");
         }
-         
+        
+        
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
-    
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         tbListaServicos.addRowSelectionInterval(0, tbListaServicos.getRowCount() - 1);
         
@@ -278,7 +278,6 @@ public class ListaServicos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
-    
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         ServicoDAO servicoDAO = new ServicoDAO();
         
@@ -302,6 +301,9 @@ public class ListaServicos extends javax.swing.JFrame {
         formularioServico.enviaDados(retorno, codigo);
         formularioServico.setVisible(true);
         formularioServico.passaflag(flagalterar);
+     
+        
+        
        
     }//GEN-LAST:event_btnAlterarActionPerformed
 

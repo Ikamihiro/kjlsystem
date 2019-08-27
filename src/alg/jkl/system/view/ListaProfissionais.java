@@ -28,6 +28,8 @@ public class ListaProfissionais extends javax.swing.JFrame {
         bt_Alterar = new javax.swing.JButton();
         bt_Atualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        novaFuncao = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         jToolBar1.setRollover(true);
 
@@ -43,15 +45,6 @@ public class ListaProfissionais extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel2.setText("PROFISSIONAIS CADASTRADOS");
 
-        pesquisa.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-                pesquisaAncestorMoved(evt);
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
         pesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pesquisaActionPerformed(evt);
@@ -105,7 +98,6 @@ public class ListaProfissionais extends javax.swing.JFrame {
         });
 
         bt_Atualizar.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        bt_Atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/Arrow-refresh-icon.png"))); // NOI18N
         bt_Atualizar.setText("Atualizar");
         bt_Atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +108,15 @@ public class ListaProfissionais extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel1.setText("Nome:");
 
+        novaFuncao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                novaFuncaoActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        jLabel3.setText("Nova Função:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,20 +125,26 @@ public class ListaProfissionais extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Bt_incluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Bt_Excluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_Atualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                            .addComponent(bt_Alterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(novaFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(bt_Alterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Bt_incluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Bt_Excluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bt_Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(jLabel2)))
@@ -147,26 +154,30 @@ public class ListaProfissionais extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Bt_incluir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Bt_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bt_Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bt_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btPesquisa))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(Bt_incluir, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Bt_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(novaFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,35 +185,22 @@ public class ListaProfissionais extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_pesquisaActionPerformed
 
     private void Bt_incluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_incluirActionPerformed
-        // Instancia a Frame FormularioProfissional.
-        try {
-            int flagcadastrar = 1;
-            FormularioProfissional formularioProfissional = new FormularioProfissional();
-            formularioProfissional.setVisible(true);
-            formularioProfissional.passaflag(flagcadastrar);    
-        } catch (Exception e) {
-            System.out.println("Erro no cadastro");
-        }
-        
-        
+        // TODO add your handling code here:
+        CadastroProfissional cadastroProf = new CadastroProfissional();
+        cadastroProf.setVisible(true);
     }//GEN-LAST:event_Bt_incluirActionPerformed
 
     private void bt_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_AlterarActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Teste.....");
+        ProfissionalDAO profissionalDao = new ProfissionalDAO();
+        ArrayList<Profissional> listaProfissional = profissionalDao.listar();
         
-        ProfissionalDAO profissionalDao = new  ProfissionalDAO();
-        
-        //Retorna um inteiro com o numero da linha que está selecionada
         int indiceLinha = tbListaProfissionais.getSelectedRow();
-<<<<<<< HEAD
-        
-        //Paresenta uma mensagem se o usuário não selecionar uma linha
-        if (indiceLinha < 0){
-            JOptionPane.showMessageDialog(null, "Você precisa selecionar uma linha", "Erro!", JOptionPane.ERROR_MESSAGE);
-=======
         //Me retorna o código do serviço
         int codigo = (int) tbListaProfissionais.getValueAt(indiceLinha, 0);
         //String nomeProfissional = (String) tbListaProfissionais.getValueAt(indiceLinha, 1);
@@ -228,51 +226,24 @@ public class ListaProfissionais extends javax.swing.JFrame {
                     "Não foi possível alterar o profissional!", 
                     "Error!", 
                     JOptionPane.ERROR_MESSAGE);
->>>>>>> master
         }
-
-        //Retorna o codigo do serviço
-        int codigo = (int) tbListaProfissionais.getValueAt(indiceLinha, 0);
-        
-        //Retorna a lista selecionada
-        ArrayList<Profissional> retorno = profissionalDao.retornaDados(codigo);
-        
-        //Chama o formulario Profissional para alterar os dados desejados 
-        int flagalterar = 2;
-        FormularioProfissional formularioProfissional = new FormularioProfissional();
-        
-        formularioProfissional.enviaDados(retorno, codigo);
-        formularioProfissional.setVisible(true);
-        formularioProfissional.passaflag(flagalterar);
         
     }//GEN-LAST:event_bt_AlterarActionPerformed
 
-    
-    
     private void bt_AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_AtualizarActionPerformed
-        
-        // Chama o ProfissionalDAO e sua função listra
+        // TODO add your handling code here:
         ProfissionalDAO profissionalDao = new ProfissionalDAO();
         ArrayList<Profissional> listaProfissionais = profissionalDao.listar();
-        
-        // Declara tabela tbModel, que recebe a formatação da tbListaProfissionais
+
         DefaultTableModel tbModel = (DefaultTableModel) tbListaProfissionais.getModel();
         
         tbModel.setRowCount(0);
         
-        // O laço for percorre a lista de profissionais que retornou do BD no ProfissionalDAO
-        // Insere os dados de cada profissional doda listad de profissionais na tbModel 
-        // E indiretamente também na tbListaProfissionais.
         for (Profissional profissional : listaProfissionais){
-<<<<<<< HEAD
-            Object[] linha = new Object[4];
-=======
            Object[] linha = new Object[3];
->>>>>>> master
             linha[0] = profissional.getId_profissional();
-            linha[1] = profissional.getCpf();
-            linha[2] = profissional.getNome();
-            linha[3] = profissional.getFuncao();
+            linha[1] = profissional.getNome();
+            linha[2] = profissional.getFuncao();
             tbModel.addRow(linha);
         }
     }//GEN-LAST:event_bt_AtualizarActionPerformed
@@ -307,72 +278,51 @@ public class ListaProfissionais extends javax.swing.JFrame {
                     "Não foi possível alterar o profissional!", 
                     "Error!", 
                     JOptionPane.ERROR_MESSAGE);
-        }        
+        }
+        
     }//GEN-LAST:event_Bt_ExcluirActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // Chama o ProfissionalDAO e sua função listar
         ProfissionalDAO profissionalDao = new ProfissionalDAO();
         ArrayList<Profissional> listaProfissionais = profissionalDao.listar();
-        
-        // Declara tabela tbModel, que recebe a formatação da tbListaProfissionais
+
         DefaultTableModel tbModel = (DefaultTableModel) tbListaProfissionais.getModel();
         
         tbModel.setRowCount(0);
         
-        // O laço for percorre a lista de profissionais que retornou do BD no ProfissionalDAO
-        // Insere os dados de cada profissional doda listad de profissionais na tbModel 
-        // E indiretamente também na tbListaProfissionais. 
         for (Profissional profissional : listaProfissionais){
             Object[] linha = new Object[4];
             linha[0] = profissional.getId_profissional();
-<<<<<<< HEAD
-            linha[1] = profissional.getCpf();
-=======
->>>>>>> master
             linha[2] = profissional.getNome();
             linha[3] = profissional.getFuncao();
             tbModel.addRow(linha);
         }
     }//GEN-LAST:event_formWindowOpened
 
-    
     private void btPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisaActionPerformed
-        // Pega o nome a pesquisar digitado na tela de ListaProfissionais e guarda em pesquisar
+        // TODO add your handling code here:
         String pesquisar = pesquisa.getText(); 
+        System.out.println("nome: "+pesquisar);
         
-        // Chama o ProfissionalDAO e sua função pesquiar
         ProfissionalDAO profissionalDao = new ProfissionalDAO();
         ArrayList<Profissional> pesquisaProfissionais = profissionalDao.pesquisar(pesquisar);
-        
-        // Declara tabela tbModel, que recebe a formatação da tbListaProfissionais
+
         DefaultTableModel tbModel = (DefaultTableModel) tbListaProfissionais.getModel();
         
         tbModel.setRowCount(0);
         
-        // O laço for percorre a lista de profissionais que retornou do BD no ProfissionalDAO
-        // Insere os dados de cada profissional doda listad de profissionais na tbModel 
-        // E indiretamente também na tbListaProfissionais.
         for (Profissional profissional : pesquisaProfissionais){
             Object[] linha = new Object[4];
             linha[0] = profissional.getId_profissional();
-<<<<<<< HEAD
-            linha[1] = profissional.getCpf();
-=======
->>>>>>> master
             linha[2] = profissional.getNome();
             linha[3] = profissional.getFuncao();
             tbModel.addRow(linha);
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> master
     }//GEN-LAST:event_btPesquisaActionPerformed
 
-    private void pesquisaAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_pesquisaAncestorMoved
+    private void novaFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaFuncaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pesquisaAncestorMoved
+    }//GEN-LAST:event_novaFuncaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,15 +370,11 @@ public class ListaProfissionais extends javax.swing.JFrame {
     private javax.swing.JButton bt_Atualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTextField novaFuncao;
     private javax.swing.JTextField pesquisa;
     private javax.swing.JTable tbListaProfissionais;
     // End of variables declaration//GEN-END:variables
-
-  
-    private void passaflag(int flag) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

@@ -9,9 +9,6 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -40,14 +37,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="Bt_Salvar" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
-<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.form
-                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                  <Component id="cpfProfissional" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                  <Component id="funcaoProfissional" alignment="0" max="32767" attributes="0"/>
-=======
                   <Component id="cpfCampo" alignment="0" max="32767" attributes="0"/>
->>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.form
               </Group>
               <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
@@ -57,13 +47,6 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.form
-              <Component id="jLabel1" min="-2" pref="17" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="cpfProfissional" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-=======
->>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.form
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="nomeProfissional" min="-2" pref="21" max="-2" attributes="0"/>
@@ -86,17 +69,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.form
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="cpf:"/>
-      </Properties>
-    </Component>
-=======
->>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.form
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -113,14 +85,6 @@
         <Property name="text" type="java.lang.String" value="Fun&#xe7;&#xe3;o:"/>
       </Properties>
     </Component>
-<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.form
-    <Component class="javax.swing.JTextField" name="cpfProfissional">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cpfProfissionalActionPerformed"/>
-      </Events>
-    </Component>
-=======
->>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.form
     <Component class="javax.swing.JTextField" name="nomeProfissional">
     </Component>
     <Component class="javax.swing.JTextField" name="funcaoProfissional">

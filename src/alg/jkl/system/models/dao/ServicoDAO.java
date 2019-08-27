@@ -147,7 +147,6 @@ public class ServicoDAO {
         return false;
     }
     
-    
     public ArrayList<Servico> pesquisar(String descricao_servico) {
         ArrayList<Servico> pesquisaServicos = null;
         
@@ -177,6 +176,9 @@ public class ServicoDAO {
         }
         return pesquisaServicos;
     }
-     
+    
+    
+
+    
 }
 

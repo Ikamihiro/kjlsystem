@@ -23,15 +23,6 @@ INSERT INTO tb_servicos (descricao_servico, categoria_servico) VALUES
 
 
 CREATE TABLE tb_profissionais (
-<<<<<<< HEAD
-id_Profissional int PRIMARY KEY AUTO_INCREMENT,
-cpf varchar(12) not null,
-nome varchar (50) not null,
-funcao varchar(50) not null
-);
-
-INSERT INTO tb_profissionais ( cpf, nome, funcao) values
-=======
     id_profissional int primary key auto_increment,
     cpf varchar(12) not null,
     nome varchar(50) not null,
@@ -39,7 +30,6 @@ INSERT INTO tb_profissionais ( cpf, nome, funcao) values
 );
 
 INSERT INTO tb_profissionais (cpf, nome, funcao) values
->>>>>>> master
 ("3019", "Joaquim", "dev-front"),
 ("3007", "Paulo", "dev-back"),
 ("3012", "Claudia", "dev-front"),

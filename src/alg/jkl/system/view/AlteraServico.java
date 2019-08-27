@@ -59,11 +59,6 @@ public class AlteraServico extends javax.swing.JFrame {
         jLabel2.setText("Categoria");
 
         cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbxCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxCategoriaActionPerformed(evt);
-            }
-        });
 
         btnSalvar.setBackground(new java.awt.Color(0, 153, 0));
         btnSalvar.setText("Salvar");
@@ -165,10 +160,6 @@ public class AlteraServico extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_formWindowOpened
-
-    private void cbxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxCategoriaActionPerformed
 
     /**
      * @param args the command line arguments

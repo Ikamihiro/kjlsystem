@@ -25,15 +25,16 @@ INSERT INTO tb_servicos (descricao_servico, categoria_servico) VALUES
 
 
 CREATE TABLE tb_profissionais (
-id_Profissional int PRIMARY KEY,
+id_Profissional int PRIMARY KEY AUTO_INCREMENT,
+cpf varchar(12) not null,
 nome varchar (50) not null,
 funcao varchar(50) not null
 );
 
-INSERT INTO tb_profissionais (id_profissional, nome, funcao) values
-(3019, "Joaquim", "dev-front"),
-(3007, "Paulo", "dev-back"),
-(3012, "Claudia", "dev-front"),
-(3015, "Rui", "analista"),
-(3013, "Otavio", "tecnico-hardware"),
-(3002, "Joana", "analista");
+INSERT INTO tb_profissionais ( cpf, nome, funcao) values
+("3019", "Joaquim", "dev-front"),
+("3007", "Paulo", "dev-back"),
+("3012", "Claudia", "dev-front"),
+("3015", "Rui", "analista"),
+("3013", "Otavio", "tecnico-hardware"),
+("3002", "Joana", "analista");

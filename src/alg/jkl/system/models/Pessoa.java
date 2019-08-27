@@ -4,10 +4,6 @@ public abstract class Pessoa {
     private int id;
     private String nome;
     
-    /*public Entidade(String nome) {
-        setNome(nome);  // estou pensando na viabilidade de implementar construtores
-    }*/
-    
     public abstract boolean verificarDados();
     public abstract void alterarDados(String nome);
 

@@ -2,8 +2,7 @@
 create table tb_usuario (
     id_usuario int not null primary key AUTO_INCREMENT,
     nome varchar(30) not null,
-    senha varchar(30) not null,
-    nivel_usuario int not null
+    senha varchar(30) not null
 );
 
 insert into tb_usuario (nome, senha, nivel_usuario) values ("user", "secret", 1);
@@ -11,9 +10,9 @@ insert into tb_usuario (nome, senha, nivel_usuario) values ("user", "secret", 1)
 
 
 CREATE TABLE tb_servicos (
-id_servico int PRIMARY KEY auto_increment,
- descricao_servico text not null,
- categoria_servico varchar(15) not null
+    id_servico int PRIMARY KEY auto_increment,
+    descricao_servico text not null,
+    categoria_servico varchar(15) not null
 );
 
 INSERT INTO tb_servicos (descricao_servico, categoria_servico) VALUES
@@ -23,17 +22,17 @@ INSERT INTO tb_servicos (descricao_servico, categoria_servico) VALUES
  ("app", "sofware");
 
 
-
 CREATE TABLE tb_profissionais (
-id_Profissional int PRIMARY KEY,
-nome varchar (50) not null,
-funcao varchar(50) not null
+    id_profissional int primary key auto_increment,
+    cpf varchar(12) not null,
+    nome varchar(50) not null,
+    funcao varchar(50) not null
 );
 
-INSERT INTO tb_profissionais (id_profissional, nome, funcao) values
-(3019, "Joaquim", "dev-front"),
-(3007, "Paulo", "dev-back"),
-(3012, "Claudia", "dev-front"),
-(3015, "Rui", "analista"),
-(3013, "Otavio", "tecnico-hardware"),
-(3002, "Joana", "analista");
+INSERT INTO tb_profissionais (cpf, nome, funcao) values
+("3019", "Joaquim", "dev-front"),
+("3007", "Paulo", "dev-back"),
+("3012", "Claudia", "dev-front"),
+("3015", "Rui", "analista"),
+("3013", "Otavio", "tecnico-hardware"),
+("3002", "Joana", "analista");

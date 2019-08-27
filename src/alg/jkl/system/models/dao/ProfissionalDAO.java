@@ -39,7 +39,7 @@ public class ProfissionalDAO {
                         profissional.setCpf(rs.getString("cpf"));
                         profissional.setNome(rs.getString("nome"));
                         profissional.setFuncao(rs.getString("funcao"));
-                         listaProfissionais.add(profissional);
+                        listaProfissionais.add(profissional);
                     }    
                 }
                 

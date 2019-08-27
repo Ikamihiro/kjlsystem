@@ -1,7 +1,7 @@
 package alg.jkl.system.models;
 
 public class Usuario extends Pessoa{
-    private int id, nivel;
+    private int id;
     private String senha;
     
     @Override
@@ -27,14 +27,6 @@ public class Usuario extends Pessoa{
         if(!senha.equals("")) {
             this.setSenha(senha);
         }
-    }
-
-    public int getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
     }
 
     public String getSenha() {

@@ -34,15 +34,20 @@ public class FormularioProfissional extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.java
         cpfProfissional = new javax.swing.JTextField();
+=======
+>>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.java
         nomeProfissional = new javax.swing.JTextField();
         funcaoProfissional = new javax.swing.JTextField();
         Bt_Cancelar = new javax.swing.JButton();
         Bt_Salvar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        cpfCampo = new javax.swing.JTextField();
 
+<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.java
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -52,6 +57,10 @@ public class FormularioProfissional extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jLabel1.setText("cpf:");
+=======
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Profissionais");
+>>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.java
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jLabel2.setText("Nome:");
@@ -59,12 +68,17 @@ public class FormularioProfissional extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jLabel3.setText("Função:");
 
+<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.java
         cpfProfissional.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cpfProfissionalActionPerformed(evt);
             }
         });
 
+=======
+        Bt_Cancelar.setBackground(new java.awt.Color(102, 0, 0));
+        Bt_Cancelar.setForeground(new java.awt.Color(204, 204, 204));
+>>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.java
         Bt_Cancelar.setText("Cancelar");
         Bt_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,12 +86,17 @@ public class FormularioProfissional extends javax.swing.JFrame {
             }
         });
 
+        Bt_Salvar.setBackground(new java.awt.Color(0, 51, 255));
+        Bt_Salvar.setForeground(new java.awt.Color(204, 204, 204));
         Bt_Salvar.setText("Salvar");
         Bt_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Bt_SalvarActionPerformed(evt);
             }
         });
+
+        jLabel4.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        jLabel4.setText("CPF:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,43 +105,60 @@ public class FormularioProfissional extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nomeProfissional, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(funcaoProfissional)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Bt_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Bt_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.java
                     .addComponent(jLabel3)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cpfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(funcaoProfissional))
                 .addContainerGap(134, Short.MAX_VALUE))
+=======
+                    .addComponent(cpfCampo))
+                .addContainerGap(32, Short.MAX_VALUE))
+>>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.java
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.java
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cpfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+=======
+>>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.java
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomeProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cpfCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(funcaoProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Bt_Salvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Bt_Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Bt_Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Bt_Salvar))
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.java
     private void cpfProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfProfissionalActionPerformed
         
     }//GEN-LAST:event_cpfProfissionalActionPerformed
@@ -138,6 +174,16 @@ public class FormularioProfissional extends javax.swing.JFrame {
         novoProfissional.setCpf(cpfProfissional.getText()); 
         novoProfissional.setNome(nomeProfissional.getText());
         novoProfissional.setFuncao(funcaoProfissional.getText());
+=======
+    private void Bt_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_SalvarActionPerformed
+        // TODO add your handling code here:
+        Profissional profissional = new Profissional();
+        ProfissionalDAO profissionalDao = new ProfissionalDAO();
+         
+        //profissional.setId); 
+        profissional.setNome(nomeProfissional.getText());
+        profissional.setFuncao(funcaoProfissional.getText());
+>>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.java
         
         boolean retorno = profissionalDao.cadastrar(novoProfissional);
         
@@ -224,11 +270,17 @@ public class FormularioProfissional extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bt_Cancelar;
     private javax.swing.JButton Bt_Salvar;
+<<<<<<< HEAD:src/alg/jkl/system/view/FormularioProfissional.java
     private javax.swing.JTextField cpfProfissional;
     private javax.swing.JTextField funcaoProfissional;
     private javax.swing.JLabel jLabel1;
+=======
+    private javax.swing.JTextField cpfCampo;
+    private javax.swing.JTextField funcaoProfissional;
+>>>>>>> master:src/alg/jkl/system/view/CadastroProfissional.java
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField nomeProfissional;
     // End of variables declaration//GEN-END:variables
 }

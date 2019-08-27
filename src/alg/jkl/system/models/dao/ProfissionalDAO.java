@@ -64,7 +64,7 @@ public class ProfissionalDAO {
                         profissional.setId_profissional(rs.getInt("id_profissional"));
                         profissional.setNome(rs.getString("nome"));
                         profissional.setFuncao(rs.getString("funcao"));
-                         listaProfissionais.add(profissional);
+                        listaProfissionais.add(profissional);
                     }    
                 }
                                 

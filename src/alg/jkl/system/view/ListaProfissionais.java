@@ -33,7 +33,8 @@ public class ListaProfissionais extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Profissionais");
         setBackground(new java.awt.Color(22, 21, 19));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -64,7 +65,7 @@ public class ListaProfissionais extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CPF", "Nome", "Função"
+                "Identificador", "CPF", "Nome", "Função"
             }
         ));
         jScrollPane1.setViewportView(tbListaProfissionais);
@@ -180,6 +181,7 @@ public class ListaProfissionais extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void pesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaActionPerformed
@@ -199,14 +201,12 @@ public class ListaProfissionais extends javax.swing.JFrame {
         ArrayList<Profissional> listaProfissional = profissionalDao.listar();
         
         int indiceLinha = tbListaProfissionais.getSelectedRow();
-        System.out.println("Teste.....");
         //Me retorna o código do serviço
         int codigo = (int) tbListaProfissionais.getValueAt(indiceLinha, 0);
         //String nomeProfissional = (String) tbListaProfissionais.getValueAt(indiceLinha, 1);
         
         String pesquisar = pesquisa.getText();
         String alteraFuncao = novaFuncao.getText();
-        System.out.println("Teste.....");
         //Exclui a linha do JTable
         ((DefaultTableModel) tbListaProfissionais.getModel()).removeRow(tbListaProfissionais.getSelectedRow());
         System.out.println("Teste: ... "+codigo+", "+alteraFuncao);
@@ -240,7 +240,7 @@ public class ListaProfissionais extends javax.swing.JFrame {
         tbModel.setRowCount(0);
         
         for (Profissional profissional : listaProfissionais){
-            Object[] linha = new Object[3];
+           Object[] linha = new Object[3];
             linha[0] = profissional.getId_profissional();
             linha[1] = profissional.getNome();
             linha[2] = profissional.getFuncao();
@@ -291,10 +291,10 @@ public class ListaProfissionais extends javax.swing.JFrame {
         tbModel.setRowCount(0);
         
         for (Profissional profissional : listaProfissionais){
-            Object[] linha = new Object[3];
+            Object[] linha = new Object[4];
             linha[0] = profissional.getId_profissional();
-            linha[1] = profissional.getNome();
-            linha[2] = profissional.getFuncao();
+            linha[2] = profissional.getNome();
+            linha[3] = profissional.getFuncao();
             tbModel.addRow(linha);
         }
     }//GEN-LAST:event_formWindowOpened
@@ -312,25 +312,12 @@ public class ListaProfissionais extends javax.swing.JFrame {
         tbModel.setRowCount(0);
         
         for (Profissional profissional : pesquisaProfissionais){
-            Object[] linha = new Object[3];
+            Object[] linha = new Object[4];
             linha[0] = profissional.getId_profissional();
-            linha[1] = profissional.getNome();
-            linha[2] = profissional.getFuncao();
+            linha[2] = profissional.getNome();
+            linha[3] = profissional.getFuncao();
             tbModel.addRow(linha);
         }
-  
-        /*tbListaProfissionais.addRowSelectionInterval(0, tbListaProfissionais.getRowCount() - 1);
-        ArrayList<Profissional> listaProfissionais = profissionalDao.listar(); 
-        DefaultTableModel tbModel = (DefaultTableModel) tbListaProfissionais.getModel();
-        tbModel.setRowCount(0);
-        
-        for (Profissional profissional : listaProfissionais){
-            Object[] linha = new Object[3];
-            linha[0] = profissional.getId_profissional();
-            linha[1] = profissional.getNome();
-            linha[2] = profissional.getFuncao();
-            tbModel.addRow(linha);
-        } */
     }//GEN-LAST:event_btPesquisaActionPerformed
 
     private void novaFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaFuncaoActionPerformed

@@ -4,7 +4,7 @@ public class Profissional {
     private int id_profissional;
     private String nome;
     private String funcao;
-
+    
     public int getId_profissional() {
         return id_profissional;
     }
@@ -28,5 +28,5 @@ public class Profissional {
     public void setFuncao(String funcao) {
         this.funcao = funcao;
     }
-    
-}
+
+    }

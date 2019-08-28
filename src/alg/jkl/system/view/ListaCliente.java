@@ -1,15 +1,16 @@
 package alg.jkl.system.view;
 
-import alg.jkl.system.models.Profissional;
-import alg.jkl.system.models.dao.ProfissionalDAO;
+
+import alg.jkl.system.models.Cliente;
+import alg.jkl.system.models.dao.ClienteDAO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
-public class ListaProfissionais extends javax.swing.JFrame {
+public class ListaCliente extends javax.swing.JFrame {
 
-    public ListaProfissionais() {
+    public ListaCliente() {
         initComponents();
     }
 
@@ -22,7 +23,7 @@ public class ListaProfissionais extends javax.swing.JFrame {
         pesquisa = new javax.swing.JTextField();
         btPesquisa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbListaProfissionais = new javax.swing.JTable();
+        tbListaClientes = new javax.swing.JTable();
         Bt_incluir = new javax.swing.JButton();
         Bt_Excluir = new javax.swing.JButton();
         bt_Alterar = new javax.swing.JButton();
@@ -43,12 +44,12 @@ public class ListaProfissionais extends javax.swing.JFrame {
         jLabel2.setText("PROFISSIONAIS CADASTRADOS");
 
         pesquisa.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-                pesquisaAncestorMoved(evt);
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                pesquisaAncestorMoved(evt);
             }
         });
         pesquisa.addActionListener(new java.awt.event.ActionListener() {
@@ -65,16 +66,16 @@ public class ListaProfissionais extends javax.swing.JFrame {
             }
         });
 
-        tbListaProfissionais.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        tbListaProfissionais.setModel(new javax.swing.table.DefaultTableModel(
+        tbListaClientes.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        tbListaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Identificador", "CPF", "Nome", "Função"
+                "Identificador", "CPF", "Nome", "Telefone"
             }
         ));
-        jScrollPane1.setViewportView(tbListaProfissionais);
+        jScrollPane1.setViewportView(tbListaClientes);
 
         Bt_incluir.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         Bt_incluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/New-file-icon.png"))); // NOI18N
@@ -179,9 +180,9 @@ public class ListaProfissionais extends javax.swing.JFrame {
         // Instancia a Frame FormularioProfissional.
         try {
             int flagcadastrar = 1;
-            FormularioProfissional formularioProfissional = new FormularioProfissional();
-            formularioProfissional.setVisible(true);
-            formularioProfissional.passaflag(flagcadastrar);    
+            FormularioCliente formularioCliente = new FormularioCliente();
+            formularioCliente.setVisible(true);
+            formularioCliente.passaflag(flagcadastrar);    
         } catch (Exception e) {
             System.out.println("Erro no cadastro");
         }
@@ -191,10 +192,10 @@ public class ListaProfissionais extends javax.swing.JFrame {
 
     private void bt_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_AlterarActionPerformed
         
-        ProfissionalDAO profissionalDao = new  ProfissionalDAO();
+        ClienteDAO clienteDao = new  ClienteDAO();
         
         //Retorna um inteiro com o numero da linha que está selecionada
-        int indiceLinha = tbListaProfissionais.getSelectedRow();
+        int indiceLinha = tbListaClientes.getSelectedRow();
         
         //Paresenta uma mensagem se o usuário não selecionar uma linha
         if (indiceLinha < 0){
@@ -202,19 +203,18 @@ public class ListaProfissionais extends javax.swing.JFrame {
         }
 
         //Retorna o codigo do serviço
-        int codigo = (int) tbListaProfissionais.getValueAt(indiceLinha, 0);
+        int codigo = (int) tbListaClientes.getValueAt(indiceLinha, 0);
         
         //Retorna a lista selecionada
-        ArrayList<Profissional> retorno = profissionalDao.retornaDados(codigo);
+        ArrayList<Cliente> retorno = clienteDao.retornaDados(codigo);
         
         //Chama o formulario Profissional para alterar os dados desejados 
-        int flagalterar = 2;
-        FormularioProfissional formularioProfissional = new FormularioProfissional();
-        
-        formularioProfissional.enviaDados(retorno, codigo);
-        formularioProfissional.setVisible(true);
-        formularioProfissional.passaflag(flagalterar);
-        
+        int flagalterar = 2;        
+        FormularioCliente formularioCliente = new FormularioCliente();
+            
+        formularioCliente.enviaDados(retorno, codigo);
+        formularioCliente.setVisible(true);
+        formularioCliente.passaflag(flagalterar);      
     }//GEN-LAST:event_bt_AlterarActionPerformed
 
     
@@ -222,46 +222,52 @@ public class ListaProfissionais extends javax.swing.JFrame {
     private void bt_AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_AtualizarActionPerformed
         
         // Chama o ProfissionalDAO e sua função listra
-        ProfissionalDAO profissionalDao = new ProfissionalDAO();
-        ArrayList<Profissional> listaProfissionais = profissionalDao.listar();
+        ClienteDAO clienteDao = new ClienteDAO();
+        ArrayList<Cliente> listaClientes = clienteDao.listar();
         
         // Declara tabela tbModel, que recebe a formatação da tbListaProfissionais
-        DefaultTableModel tbModel = (DefaultTableModel) tbListaProfissionais.getModel();
+        DefaultTableModel tbModel = (DefaultTableModel) tbListaClientes.getModel();
         
         tbModel.setRowCount(0);
         
         // O laço for percorre a lista de profissionais que retornou do BD no ProfissionalDAO
         // Insere os dados de cada profissional doda listad de profissionais na tbModel 
         // E indiretamente também na tbListaProfissionais.
-        for (Profissional profissional : listaProfissionais){
+        for (Cliente cliente : listaClientes){
             Object[] linha = new Object[4];
-            linha[0] = profissional.getId_profissional();
-            linha[1] = profissional.getCpf();
-            linha[2] = profissional.getNome();
-            linha[3] = profissional.getFuncao();
+            linha[0] = cliente.getId_cliente();
+            linha[1] = cliente.getCpf();
+            linha[2] = cliente.getNome();
+            linha[3] = cliente.getTelefone();
             tbModel.addRow(linha);
         }
     }//GEN-LAST:event_bt_AtualizarActionPerformed
 
     private void Bt_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_ExcluirActionPerformed
         System.out.println("Teste.....");
-        ProfissionalDAO profissionalDao = new ProfissionalDAO();
-        ArrayList<Profissional> listaProfissional = profissionalDao.listar();
+        ClienteDAO clienteDao = new ClienteDAO();
+        ArrayList<Cliente> listaClientes = clienteDao.listar();
         
        //Me retorna um inteiro com o numero da linha que está selecionada
-        int indiceLinha = tbListaProfissionais.getSelectedRow();
+        int indiceLinha = tbListaClientes.getSelectedRow();
         
+        //Apresenta uma mensagem se o usuário não selecionar uma linha
         if (indiceLinha < 0){
             JOptionPane.showMessageDialog(null, "Você precisa selecionar uma linha", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
         
         //Me retorna o código do serviço
-        int codigo = (int) tbListaProfissionais.getValueAt(indiceLinha, 0);
+        int codigo = (int) tbListaClientes.getValueAt(indiceLinha, 0);
         
+        if (indiceLinha < 0){
+            JOptionPane.showMessageDialog(null, "Você precisa selecionar uma linha", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        System.out.println("Teste.....");
         //Exclui a linha do JTable
-        ((DefaultTableModel) tbListaProfissionais.getModel()).removeRow(tbListaProfissionais.getSelectedRow());
+        ((DefaultTableModel) tbListaClientes.getModel()).removeRow(tbListaClientes.getSelectedRow());
         
-        boolean retorno = profissionalDao.remover(codigo);
+        boolean retorno = clienteDao.remover(codigo);
         
         System.out.println("Teste.....");
         if (retorno == true) {
@@ -282,23 +288,23 @@ public class ListaProfissionais extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // Chama o ProfissionalDAO e sua função listar
-        ProfissionalDAO profissionalDao = new ProfissionalDAO();
-        ArrayList<Profissional> listaProfissionais = profissionalDao.listar();
+        ClienteDAO clienteDao = new ClienteDAO();
+        ArrayList<Cliente> listaClientes = clienteDao.listar();
         
         // Declara tabela tbModel, que recebe a formatação da tbListaProfissionais
-        DefaultTableModel tbModel = (DefaultTableModel) tbListaProfissionais.getModel();
+        DefaultTableModel tbModel = (DefaultTableModel) tbListaClientes.getModel();
         
         tbModel.setRowCount(0);
         
         // O laço for percorre a lista de profissionais que retornou do BD no ProfissionalDAO
         // Insere os dados de cada profissional doda listad de profissionais na tbModel 
         // E indiretamente também na tbListaProfissionais. 
-        for (Profissional profissional : listaProfissionais){
+        for (Cliente cliente : listaClientes){
             Object[] linha = new Object[4];
-            linha[0] = profissional.getId_profissional();
-            linha[1] = profissional.getCpf();
-            linha[2] = profissional.getNome();
-            linha[3] = profissional.getFuncao();
+            linha[0] = cliente.getId_cliente();
+            linha[1] = cliente.getCpf();
+            linha[2] = cliente.getNome();
+            linha[3] = cliente.getTelefone();
             tbModel.addRow(linha);
         }
     }//GEN-LAST:event_formWindowOpened
@@ -309,23 +315,23 @@ public class ListaProfissionais extends javax.swing.JFrame {
         String pesquisar = pesquisa.getText(); 
         
         // Chama o ProfissionalDAO e sua função pesquiar
-        ProfissionalDAO profissionalDao = new ProfissionalDAO();
-        ArrayList<Profissional> pesquisaProfissionais = profissionalDao.pesquisar(pesquisar);
+        ClienteDAO clienteDao = new ClienteDAO();
+        ArrayList<Cliente> pesquisaClientes = clienteDao.pesquisar(pesquisar);
         
         // Declara tabela tbModel, que recebe a formatação da tbListaProfissionais
-        DefaultTableModel tbModel = (DefaultTableModel) tbListaProfissionais.getModel();
+        DefaultTableModel tbModel = (DefaultTableModel) tbListaClientes.getModel();
         
         tbModel.setRowCount(0);
         
         // O laço for percorre a lista de profissionais que retornou do BD no ProfissionalDAO
         // Insere os dados de cada profissional doda listad de profissionais na tbModel 
         // E indiretamente também na tbListaProfissionais.
-        for (Profissional profissional : pesquisaProfissionais){
+        for (Cliente cliente : pesquisaClientes){
             Object[] linha = new Object[4];
-            linha[0] = profissional.getId_profissional();
-            linha[1] = profissional.getCpf();
-            linha[2] = profissional.getNome();
-            linha[3] = profissional.getFuncao();
+            linha[0] = cliente.getId_cliente();
+            linha[1] = cliente.getCpf();
+            linha[2] = cliente.getNome();
+            linha[3] = cliente.getTelefone();
             tbModel.addRow(linha);
         }
 
@@ -352,14 +358,30 @@ public class ListaProfissionais extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaProfissionais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaProfissionais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaProfissionais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaProfissionais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -380,7 +402,7 @@ public class ListaProfissionais extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaProfissionais().setVisible(true);
+                new ListaCliente().setVisible(true);
             }
         });
     }
@@ -396,7 +418,7 @@ public class ListaProfissionais extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField pesquisa;
-    private javax.swing.JTable tbListaProfissionais;
+    private javax.swing.JTable tbListaClientes;
     // End of variables declaration//GEN-END:variables
 
   

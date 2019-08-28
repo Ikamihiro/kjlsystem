@@ -9,10 +9,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ServicoDAO {
+public class ServicoDAO implements DAO{
     
     //Método de listagem na página Servicos
-    public ArrayList<Servico> listar() {
+    @Override
+    public ArrayList listar() {
         ArrayList<Servico> listaServicos = null;
         
         Connection conexao = BDconfig.conectar();
@@ -43,7 +44,8 @@ public class ServicoDAO {
     } 
     
     //Método de remoção de item
-    public boolean remover (int codigoExcluir){
+    @Override
+    public boolean remover(int codigoExcluir){
         Connection conexao = BDconfig.conectar();
         
         if (conexao != null) {
@@ -64,9 +66,10 @@ public class ServicoDAO {
     }
     
     //Método de cadastro
-    public boolean cadastrar (Servico novoServico) {
+    @Override
+    public boolean cadastrar(Object objeto) {
         Connection conexao = BDconfig.conectar();
-        
+        Servico novoServico = (Servico) objeto;
         if (conexao != null) {
             try {
                 PreparedStatement pStm
@@ -89,6 +92,7 @@ public class ServicoDAO {
     
     //Método de alteração (parte 1)
     //Primeiro ele precisa retornar os dados de acordo com o código que foi selecionado
+    @Override
     public ArrayList retornaDados (int codigo) {
         ArrayList<Servico> listaAlteraServico = null;
         Connection conexao = BDconfig.conectar();
@@ -122,9 +126,10 @@ public class ServicoDAO {
         
     }
     //Aqui ele altera de fato no banco de dados
-    public boolean alterar (Servico novoServico, int codigo) {
+    @Override
+    public boolean alterar (Object object, int codigo) {
         Connection conexao = BDconfig.conectar();
-        
+        Servico novoServico = (Servico) object;
         if (conexao != null) {
             try {
                 PreparedStatement pStm
@@ -147,7 +152,8 @@ public class ServicoDAO {
         return false;
     }
     
-    public ArrayList<Servico> pesquisar(String descricao_servico) {
+    @Override
+    public ArrayList pesquisar(String descricao_servico) {
         ArrayList<Servico> pesquisaServicos = null;
         
         Connection conexao = BDconfig.conectar();
@@ -176,9 +182,4 @@ public class ServicoDAO {
         }
         return pesquisaServicos;
     }
-    
-    
-
-    
 }
-

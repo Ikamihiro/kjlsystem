@@ -43,7 +43,8 @@ public class FormularioProfissional extends javax.swing.JFrame {
         Bt_Cancelar = new javax.swing.JButton();
         Bt_Salvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Profissionais");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -51,7 +52,7 @@ public class FormularioProfissional extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        jLabel1.setText("cpf:");
+        jLabel1.setText("CPF:");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jLabel2.setText("Nome:");
@@ -121,6 +122,7 @@ public class FormularioProfissional extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cpfProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfProfissionalActionPerformed
@@ -139,7 +141,7 @@ public class FormularioProfissional extends javax.swing.JFrame {
         novoProfissional.setNome(nomeProfissional.getText());
         novoProfissional.setFuncao(funcaoProfissional.getText());
         
-        boolean retorno = profissionalDao.cadastrar(novoProfissional);
+        boolean retorno = profissionalDao.cadastrar((Object) novoProfissional);
         
         if (retorno == true) {
             JOptionPane.showMessageDialog(null, "Profissisonal cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
@@ -160,7 +162,7 @@ public class FormularioProfissional extends javax.swing.JFrame {
             profissionalAlterado.setNome(nomeProfissional.getText());
             profissionalAlterado.setFuncao(funcaoProfissional.getText());
 
-            boolean retorno = profissionalDao.alterar(profissionalAlterado, newcode);
+            boolean retorno = profissionalDao.alterar((Object) profissionalAlterado, newcode);
 
             if (retorno == true) {
                 JOptionPane.showMessageDialog(null, "Profissional alterado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);

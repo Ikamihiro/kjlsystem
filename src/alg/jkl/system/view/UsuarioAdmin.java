@@ -5,6 +5,12 @@
  */
 package alg.jkl.system.view;
 
+import alg.jkl.system.models.Usuario;
+import alg.jkl.system.models.dao.UsuarioDAO;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author joao
@@ -29,38 +35,55 @@ public class UsuarioAdmin extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tbUsuarios = new javax.swing.JTable();
+        cadastrarBotao = new javax.swing.JButton();
+        excluirBotao = new javax.swing.JButton();
+        atualizarBotao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Administrador");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jLabel1.setText("Administração de Usuários");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Identificador", "Nome", "Nível de acesso"
+                "Identificador", "Nome"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbUsuarios);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/New-file-icon.png"))); // NOI18N
-        jButton1.setText("Inserir");
+        cadastrarBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/New-file-icon.png"))); // NOI18N
+        cadastrarBotao.setText("Inserir");
+        cadastrarBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarBotaoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/page-remove-icon.png"))); // NOI18N
-        jButton2.setText("Excluir");
+        excluirBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/page-remove-icon.png"))); // NOI18N
+        excluirBotao.setText("Excluir");
+        excluirBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirBotaoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Atualizar");
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/Pencil-icon.png"))); // NOI18N
-        jButton4.setText("Alterar");
+        atualizarBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alg/jkl/system/images/Arrow-refresh-icon.png"))); // NOI18N
+        atualizarBotao.setText("Atualizar");
+        atualizarBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarBotaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,10 +99,9 @@ public class UsuarioAdmin extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))))
+                            .addComponent(cadastrarBotao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(excluirBotao, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                            .addComponent(atualizarBotao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -91,20 +113,85 @@ public class UsuarioAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cadastrarBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(excluirBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 69, Short.MAX_VALUE)))
+                        .addComponent(atualizarBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 133, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cadastrarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarBotaoActionPerformed
+        CadastroUsuario cadastro = new CadastroUsuario();
+        cadastro.setVisible(true);
+    }//GEN-LAST:event_cadastrarBotaoActionPerformed
+
+    private void excluirBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirBotaoActionPerformed
+        UsuarioDAO controller = new UsuarioDAO();
+        
+        int indiceLinha = tbUsuarios.getSelectedRow();
+        
+        if(indiceLinha < 0) {
+            JOptionPane.showMessageDialog(null, "Você precisa selecionar uma linha", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        int codigo = (int) tbUsuarios.getValueAt(indiceLinha, 0);
+        ((DefaultTableModel) tbUsuarios.getModel()).removeRow(tbUsuarios.getSelectedRow());
+        
+        boolean retorno = controller.remover(codigo);
+        
+        if (retorno == true) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Usuário excluído com sucesso!", 
+                    "Sucesso!", 
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Não foi possível excluído o usuário!", 
+                    "Error!", 
+                    JOptionPane.ERROR_MESSAGE);
+        }        
+    }//GEN-LAST:event_excluirBotaoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        UsuarioDAO controller = new UsuarioDAO();
+        ArrayList<Usuario> listaUsuario = controller.listar();
+        
+        DefaultTableModel tbModel = (DefaultTableModel) tbUsuarios.getModel();
+        
+        tbModel.setRowCount(0);
+        
+        for(Usuario user: listaUsuario) {
+            Object[] linha = new Object[2];
+            linha[0] = user.getId();
+            linha[1] = user.getNome();
+            tbModel.addRow(linha);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void atualizarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarBotaoActionPerformed
+        UsuarioDAO controller = new UsuarioDAO();
+        ArrayList<Usuario> listaUsuario = controller.listar();
+        
+        DefaultTableModel tbModel = (DefaultTableModel) tbUsuarios.getModel();
+        
+        tbModel.setRowCount(0);
+        
+        for(Usuario user: listaUsuario) {
+            Object[] linha = new Object[2];
+            linha[0] = user.getId();
+            linha[1] = user.getNome();
+            tbModel.addRow(linha);
+        }
+    }//GEN-LAST:event_atualizarBotaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,12 +232,11 @@ public class UsuarioAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton atualizarBotao;
+    private javax.swing.JButton cadastrarBotao;
+    private javax.swing.JButton excluirBotao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbUsuarios;
     // End of variables declaration//GEN-END:variables
 }

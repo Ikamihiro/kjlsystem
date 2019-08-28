@@ -32,7 +32,8 @@ public class ListaCliente extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Clientes");
         setBackground(new java.awt.Color(22, 21, 19));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -44,12 +45,12 @@ public class ListaCliente extends javax.swing.JFrame {
         jLabel2.setText("PROFISSIONAIS CADASTRADOS");
 
         pesquisa.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                pesquisaAncestorMoved(evt);
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-                pesquisaAncestorMoved(evt);
             }
         });
         pesquisa.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +171,7 @@ public class ListaCliente extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void pesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaActionPerformed
@@ -244,9 +246,7 @@ public class ListaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_AtualizarActionPerformed
 
     private void Bt_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_ExcluirActionPerformed
-        System.out.println("Teste.....");
         ClienteDAO clienteDao = new ClienteDAO();
-        ArrayList<Cliente> listaClientes = clienteDao.listar();
         
        //Me retorna um inteiro com o numero da linha que está selecionada
         int indiceLinha = tbListaClientes.getSelectedRow();
@@ -259,17 +259,11 @@ public class ListaCliente extends javax.swing.JFrame {
         //Me retorna o código do serviço
         int codigo = (int) tbListaClientes.getValueAt(indiceLinha, 0);
         
-        if (indiceLinha < 0){
-            JOptionPane.showMessageDialog(null, "Você precisa selecionar uma linha", "Erro!", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        System.out.println("Teste.....");
         //Exclui a linha do JTable
         ((DefaultTableModel) tbListaClientes.getModel()).removeRow(tbListaClientes.getSelectedRow());
         
         boolean retorno = clienteDao.remover(codigo);
         
-        System.out.println("Teste.....");
         if (retorno == true) {
             JOptionPane.showMessageDialog(
                     null, 

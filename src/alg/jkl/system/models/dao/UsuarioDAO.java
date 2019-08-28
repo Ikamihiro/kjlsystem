@@ -1,6 +1,5 @@
 package alg.jkl.system.models.dao;
 
-import alg.jkl.system.models.Pessoa;
 import alg.jkl.system.models.Usuario;
 import alg.jkl.system.util.BDconfig;
 import java.sql.Connection;
@@ -10,9 +9,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class UsuarioDAO {    
-    public boolean cadastrar(Usuario usuario) {
+public class UsuarioDAO implements DAO{    
+    @Override
+    public boolean cadastrar(Object objeto) {
         Connection conexao = BDconfig.conectar();
+        Usuario usuario = (Usuario) objeto;
         if (conexao != null) {
             try {
                 PreparedStatement pStm = conexao.prepareStatement("INSERT INTO tb_usuario (nome, senha) VALUES (?,?);");
@@ -28,7 +29,8 @@ public class UsuarioDAO {
         return false;
     }
 
-    public ArrayList<Usuario> listar() {
+    @Override
+    public ArrayList listar() {
         ArrayList<Usuario> listaUsuario = null;
         Connection conexao = BDconfig.conectar();
         if (conexao != null) {
@@ -77,6 +79,38 @@ public class UsuarioDAO {
                 System.out.println("Erro ao pesquisar usuário: " + e.getMessage());
             }
         }
+        return null;
+    }
+    
+    @Override
+    public boolean remover(int codigoExcluir){
+        Connection conexao = BDconfig.conectar();
+        if (conexao != null) {
+            try {
+                PreparedStatement pStm = conexao.prepareStatement("DELETE FROM tb_usuario WHERE id_usuario = "+codigoExcluir);
+                pStm.executeUpdate();
+                return true;
+            } catch (SQLException ex) {
+                System.out.println("Erro removendo usuário: "+ex.getMessage());
+            }
+        }
+        return false;     
+    }
+    
+    
+    // Os métodos abaixo não são implementados para a classe Usuário
+    @Override
+    public ArrayList retornaDados(int argc) {
+        return null;
+    }
+    
+    @Override
+    public boolean alterar(Object object, int arc) {
+        return false;
+    }
+    
+    @Override 
+    public ArrayList pesquisar(String argc) {
         return null;
     }
 }

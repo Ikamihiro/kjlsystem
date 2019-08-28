@@ -118,7 +118,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         Usuario usuario = new Usuario();
         usuario.setNome(nomeCampo.getText());
         usuario.setSenha(senhaCampo.getPassword().toString());
-        boolean retorno = controller.cadastrar(usuario);
+        boolean retorno = controller.cadastrar((Object)usuario);
         if (retorno == true) {
                 JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
         }else {

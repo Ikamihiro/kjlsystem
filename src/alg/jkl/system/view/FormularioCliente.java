@@ -35,7 +35,7 @@ public class FormularioCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jList1 = new javax.swing.JList<String>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -45,14 +45,15 @@ public class FormularioCliente extends javax.swing.JFrame {
         Bt_Cancelar = new javax.swing.JButton();
         Bt_Salvar = new javax.swing.JButton();
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(jList1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Clientes");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -60,7 +61,7 @@ public class FormularioCliente extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        jLabel1.setText("cpf:");
+        jLabel1.setText("CPF:");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jLabel2.setText("Nome:");
@@ -130,6 +131,7 @@ public class FormularioCliente extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cpfClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfClienteActionPerformed
@@ -148,7 +150,7 @@ public class FormularioCliente extends javax.swing.JFrame {
         novoCliente.setNome(nomeCliente.getText());
         novoCliente.setTelefone(telCliente.getText());
         
-        boolean retorno = clienteDao.cadastrar(novoCliente);
+        boolean retorno = clienteDao.cadastrar((Object) novoCliente);
         
         if (retorno == true) {
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
@@ -169,7 +171,7 @@ public class FormularioCliente extends javax.swing.JFrame {
             clienteAlterado.setNome(nomeCliente.getText());
             clienteAlterado.setTelefone(telCliente.getText());
 
-            boolean retorno = clienteDao.alterar(clienteAlterado, newcode);
+            boolean retorno = clienteDao.alterar((Object) clienteAlterado, newcode);
 
             if (retorno == true) {
                 JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);

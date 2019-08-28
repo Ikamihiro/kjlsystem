@@ -150,7 +150,7 @@ public class FormularioCliente extends javax.swing.JFrame {
         novoCliente.setNome(nomeCliente.getText());
         novoCliente.setTelefone(telCliente.getText());
         
-        boolean retorno = clienteDao.cadastrar(novoCliente);
+        boolean retorno = clienteDao.cadastrar((Object) novoCliente);
         
         if (retorno == true) {
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
@@ -171,7 +171,7 @@ public class FormularioCliente extends javax.swing.JFrame {
             clienteAlterado.setNome(nomeCliente.getText());
             clienteAlterado.setTelefone(telCliente.getText());
 
-            boolean retorno = clienteDao.alterar(clienteAlterado, newcode);
+            boolean retorno = clienteDao.alterar((Object) clienteAlterado, newcode);
 
             if (retorno == true) {
                 JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);

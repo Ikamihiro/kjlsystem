@@ -15,10 +15,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-public class ProfissionalDAO {
+public class ProfissionalDAO implements DAO {
     
     //Método de listagem na página Servicos
-    public ArrayList<Profissional> listar() {
+    @Override
+    public ArrayList listar() {
         ArrayList<Profissional> listaProfissionais = null;
         
         Connection conexao = BDconfig.conectar();
@@ -51,9 +52,10 @@ public class ProfissionalDAO {
     
     
     //Método de cadastro
-    public boolean cadastrar (Profissional novoProfissional) {
+    @Override
+    public boolean cadastrar (Object object) {
         Connection conexao = BDconfig.conectar();
-        
+        Profissional novoProfissional = (Profissional) object;
         if (conexao != null) {
             try {
                 PreparedStatement pStm
@@ -77,7 +79,8 @@ public class ProfissionalDAO {
     
     
     //Método de remoção de item
-    public boolean remover (int codigoExcluir){
+    @Override
+    public boolean remover(int codigoExcluir){
         Connection conexao = BDconfig.conectar();
         
         if (conexao != null) {
@@ -100,6 +103,7 @@ public class ProfissionalDAO {
     
       //Método de alteração (parte 1)
     //Primeiro ele precisa retornar os dados de acordo com o código que foi selecionado
+    @Override
     public ArrayList retornaDados (int codigo) {
         ArrayList<Profissional> listaAlteraProfissional = null;
         Connection conexao = BDconfig.conectar();
@@ -133,36 +137,11 @@ public class ProfissionalDAO {
         return listaAlteraProfissional;
         
     }
-    //Aqui ele altera de fato no banco de dados
-    /* public boolean alterar (Profissional novoSProfissional, int codigo) {
-        Connection conexao = BDconfig.conectar();
-        
-        if (conexao != null) {
-            try {
-                PreparedStatement pStm
-                = conexao.prepareStatement("UPDATE tb_servicos SET nome = ?, funcao = ? WHERE id_profissional = ?");
-                
-                System.out.println("Codigo aqui é "+codigo);
-                pStm.setString(1,novoSProfissional.getNome());
-                pStm.setString(2,novoSProfissional.getFuncao());
-                pStm.setString(3,Integer.toString(codigo));
-                
-                int linhas = pStm.executeUpdate();
-                
-                return true;                
-                
-            } catch (Exception ex) {
-                System.out.println("Erro ao ALTERAR novo serviço: "+ex.getMessage());
-            }
-        }
-        
-        return false;
-    } */
     
-    
-    public boolean alterar (Profissional novoProfissional, int id) {
+    @Override
+    public boolean alterar(Object object, int id) {
         Connection conexao = BDconfig.conectar();
-        
+        Profissional novoProfissional = (Profissional) object;
         if (conexao != null) {
             try {
                 PreparedStatement pStm
@@ -181,32 +160,10 @@ public class ProfissionalDAO {
         } 
         return false;
     }
-    // *    *    *    *    *   *   *    *    *    *    *
-    
-    
-    /*public boolean alterar (int id, String alterarFuncao) {
-        Connection conexao = BDconfig.conectar();
-        
-        if (conexao != null) {
-            try {
-                PreparedStatement pStm
-                = conexao.prepareStatement("UPDATE tb_profissionais SET funcao=? WHERE id_profissional = "+id);
-           
-                pStm.setString(1,alterarFuncao);
-                int linhas = pStm.executeUpdate();
-                
-                return true;                
-                
-            } catch (Exception ex) {
-                System.out.println("Erro ao altetar dados do profissional: "+ex.getMessage());
-            }
-        } 
-        return false;
-    }  */
-    
-    
+
     //Metodo de pesquisa 
-    public ArrayList<Profissional> pesquisar(String nomeProfissional) {
+    @Override
+    public ArrayList pesquisar(String nomeProfissional) {
         ArrayList<Profissional> pesquisaProfissionais = null;
         
         Connection conexao = BDconfig.conectar();

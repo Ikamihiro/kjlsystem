@@ -147,7 +147,7 @@ public class FormularioServico extends javax.swing.JFrame {
             novoServico.setcategoria_servico(categoria);
             novoServico.setdescricao_servico(txtDescricao.getText());
 
-            boolean retorno = servicoDAO.cadastrar(novoServico);
+            boolean retorno = servicoDAO.cadastrar((Object) novoServico);
 
             if (retorno == true) {
                 JOptionPane.showMessageDialog(null, "Serviço cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
@@ -166,7 +166,7 @@ public class FormularioServico extends javax.swing.JFrame {
             servicoAlterado.setcategoria_servico(categoria);
             servicoAlterado.setdescricao_servico(txtDescricao.getText());
 
-            boolean retorno = servicoDAO.alterar(servicoAlterado, newcode);
+            boolean retorno = servicoDAO.alterar((Object) servicoAlterado, newcode);
 
             if (retorno == true) {
                 JOptionPane.showMessageDialog(null, "Serviço alterado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);

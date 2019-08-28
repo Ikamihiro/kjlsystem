@@ -18,10 +18,11 @@ import java.util.ArrayList;
  *
  * @author leiciane
  */
-public class ClienteDAO {
+public class ClienteDAO implements DAO {
     //Método de listagem na página Servicos
-    public ArrayList<Cliente> listar() {
-        ArrayList<Cliente> listaClientes = null;
+    @Override
+    public ArrayList listar() {
+        ArrayList<Object> listaClientes = null;
         
         Connection conexao = BDconfig.conectar();
         if (conexao != null){
@@ -53,14 +54,14 @@ public class ClienteDAO {
     
     
     //Método de cadastro
-    public boolean cadastrar (Cliente novoCliente) {
+    @Override
+    public boolean cadastrar (Object objeto) {
         Connection conexao = BDconfig.conectar();
-        
+        Cliente novoCliente = (Cliente)objeto;
         if (conexao != null) {
             try {
                 PreparedStatement pStm
                 = conexao.prepareStatement("INSERT INTO tb_cliente (cpf, nome, telefone) VALUES (?,?,?);");
-                
                 
                 pStm.setString(1,novoCliente.getCpf());
                 pStm.setString(2,novoCliente.getNome());
@@ -79,6 +80,7 @@ public class ClienteDAO {
     
     
     //Método de remoção de item
+    @Override
     public boolean remover (int codigoExcluir){
         Connection conexao = BDconfig.conectar();
         
@@ -102,6 +104,7 @@ public class ClienteDAO {
     
       //Método de alteração (parte 1)
     //Primeiro ele precisa retornar os dados de acordo com o código que foi selecionado
+    @Override
     public ArrayList retornaDados (int codigo) {
         ArrayList<Cliente> listaAlteraCliente = null;
         Connection conexao = BDconfig.conectar();
@@ -135,11 +138,12 @@ public class ClienteDAO {
         return listaAlteraCliente;
         
     }
-    //Aqui ele altera de fato no banco de dados
     
-    public boolean alterar (Cliente novoCliente, int id) {
+    //Aqui ele altera de fato no banco de dados
+    @Override
+    public boolean alterar (Object objeto, int id) {
         Connection conexao = BDconfig.conectar();
-        
+        Cliente novoCliente = (Cliente)objeto;
         if (conexao != null) {
             try {
                 PreparedStatement pStm
@@ -161,7 +165,8 @@ public class ClienteDAO {
     
     
     //Metodo de pesquisa 
-    public ArrayList<Cliente> pesquisar(String nomeCliente) {
+    @Override
+    public ArrayList pesquisar(String nomeCliente) {
         ArrayList<Cliente> pesquisaClientes = null;
         
         Connection conexao = BDconfig.conectar();

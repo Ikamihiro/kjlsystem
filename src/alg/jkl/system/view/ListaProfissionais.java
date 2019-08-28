@@ -31,7 +31,8 @@ public class ListaProfissionais extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Profissionais");
         setBackground(new java.awt.Color(22, 21, 19));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -43,12 +44,12 @@ public class ListaProfissionais extends javax.swing.JFrame {
         jLabel2.setText("PROFISSIONAIS CADASTRADOS");
 
         pesquisa.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-                pesquisaAncestorMoved(evt);
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                pesquisaAncestorMoved(evt);
             }
         });
         pesquisa.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +170,7 @@ public class ListaProfissionais extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void pesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaActionPerformed

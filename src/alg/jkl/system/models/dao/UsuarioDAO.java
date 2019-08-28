@@ -79,4 +79,18 @@ public class UsuarioDAO {
         }
         return null;
     }
+    
+    public boolean remover(int codigoExcluir){
+        Connection conexao = BDconfig.conectar();
+        if (conexao != null) {
+            try {
+                PreparedStatement pStm = conexao.prepareStatement("DELETE FROM tb_usuario WHERE id_usuario = "+codigoExcluir);
+                pStm.executeUpdate();
+                return true;
+            } catch (SQLException ex) {
+                System.out.println("Erro removendo usuário: "+ex.getMessage());
+            }
+        }
+        return false;     
+    }
 }

@@ -35,9 +35,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
         nomeCampo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        senhaCampo = new javax.swing.JPasswordField();
         cadastrarBotao = new javax.swing.JButton();
         fecharBotao = new javax.swing.JButton();
+        senhaCampo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Usuário");
@@ -49,8 +49,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jLabel2.setText("Senha:");
-
-        senhaCampo.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
 
         cadastrarBotao.setBackground(new java.awt.Color(0, 51, 255));
         cadastrarBotao.setForeground(new java.awt.Color(204, 204, 204));
@@ -98,11 +96,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomeCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(44, 44, 44)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(senhaCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadastrarBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fecharBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -117,7 +115,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         UsuarioDAO controller = new UsuarioDAO();
         Usuario usuario = new Usuario();
         usuario.setNome(nomeCampo.getText());
-        usuario.setSenha(senhaCampo.getPassword().toString());
+        usuario.setSenha(senhaCampo.getText());
         boolean retorno = controller.cadastrar((Object)usuario);
         if (retorno == true) {
                 JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
@@ -176,7 +174,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTextField nomeCampo;
-    private javax.swing.JPasswordField senhaCampo;
+    private javax.swing.JTextField senhaCampo;
     // End of variables declaration//GEN-END:variables
 
     private String toString(char[] password) {

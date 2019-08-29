@@ -50,3 +50,21 @@ INSERT INTO tb_cliente ( cpf, nome, telefone) values
         ( "32776543", "Antonio", "3222-3333"),
         ( "32220897", "Rebeca", "3233-3444"),
         ( "32559998", "Julia", "3221-5555");
+
+CREATE TABLE tb_contrato (
+    id_contrato int not null PRIMARY KEY AUTO_INCREMENT,
+    id_servico int not null,
+    id_cliente int not null,
+    id_profissional int not null,
+    valor decimal (4,2) not null,
+    
+    CONSTRAINT fk_servico FOREIGN KEY (id_servico) REFERENCES tb_servicos (id_servico),
+    CONSTRAINT fk_cliente FOREIGN KEY (id_cliente) REFERENCES tb_cliente (id_cliente),
+    CONSTRAINT fk_profissional FOREIGN KEY (id_profissional) REFERENCES tb_profissionais (id_profissional)
+    );
+
+INSERT INTO tb_contrato ( id_servico, id_cliente, id_profissional, valor) VALUES
+	( 1, 3, 4, 400.00),
+        ( 2, 1, 5, 120.00),
+        ( 3, 2, 5, 200.00),
+        ( 4, 3, 3, 800.00);

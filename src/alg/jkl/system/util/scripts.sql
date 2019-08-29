@@ -5,7 +5,7 @@ create table tb_usuario (
     senha varchar(30) not null
 );
 
-insert into tb_usuario (nome, senha, nivel_usuario) values ("user", "secret", 1);
+insert into tb_usuario (nome, senha) values ("user", "secret");
 
 
 
@@ -56,7 +56,7 @@ CREATE TABLE tb_contrato (
     id_servico int not null,
     id_cliente int not null,
     id_profissional int not null,
-    valor decimal (4,2) not null,
+    valor decimal (8,2) not null,
     
     CONSTRAINT fk_servico FOREIGN KEY (id_servico) REFERENCES tb_servicos (id_servico),
     CONSTRAINT fk_cliente FOREIGN KEY (id_cliente) REFERENCES tb_cliente (id_cliente),

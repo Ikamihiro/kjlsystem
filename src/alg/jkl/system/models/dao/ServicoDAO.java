@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ServicoDAO implements DAO{
+public class ServicoDAO implements DAO {
     
     //Método de listagem na página Servicos
     @Override

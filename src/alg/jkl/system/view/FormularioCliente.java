@@ -140,6 +140,8 @@ public class FormularioCliente extends javax.swing.JFrame {
 
     private void Bt_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_SalvarActionPerformed
         
+        //salvar(DAO dao, Cliente.class);
+        
         //Se o flag == 1, ele vai cadastrar
     if (newflag == 1){
 

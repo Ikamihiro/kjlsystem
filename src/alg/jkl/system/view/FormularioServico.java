@@ -194,6 +194,7 @@ public class FormularioServico extends javax.swing.JFrame {
             //#####Gambiarra
             cbxCategoria.addItem(retorno.get(0).getcategoria_servico());
             txtDescricao.setText(retorno.get(0).getdescricao_servico());
+            
             if ("Hardware".equals(retorno.get(0).getcategoria_servico())) {
                 cbxCategoria.addItem("Software");
             } else {

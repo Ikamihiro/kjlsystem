@@ -2,11 +2,20 @@ package alg.jkl.system.models;
 
 public abstract class Pessoa {
     private int id;
+    private String cpf;
     private String nome;
     
     public abstract boolean verificarDados();
     public abstract void alterarDados(String nome);
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
     public int getId() {
         return id;
     }

@@ -1,11 +1,9 @@
 package alg.jkl.system.models;
 
-public class Cliente {  
+public class Cliente extends Pessoa {  
     //String cpf;
     //String Telefone;
     private int id_cliente;
-    private String cpf;
-    private String nome;
     private String telefone;
 
     public int getId_cliente() {
@@ -16,22 +14,6 @@ public class Cliente {
         this.id_cliente = id_cliente;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getTelefone() {
         return telefone;
     }
@@ -39,6 +21,14 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
-    
+
+    @Override
+    public boolean verificarDados() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void alterarDados(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

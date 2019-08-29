@@ -91,6 +91,11 @@ public class Home extends javax.swing.JFrame {
         contratosCall.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         contratosCall.setForeground(new java.awt.Color(204, 204, 204));
         contratosCall.setText("Contratos");
+        contratosCall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contratosCallActionPerformed(evt);
+            }
+        });
 
         servicosCall.setBackground(new java.awt.Color(0, 102, 255));
         servicosCall.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
@@ -293,6 +298,11 @@ public class Home extends javax.swing.JFrame {
         ListaCliente cliente = new ListaCliente();
         cliente.setVisible(true);
     }//GEN-LAST:event_clientesCallActionPerformed
+
+    private void contratosCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratosCallActionPerformed
+        ListaContratos lista = new ListaContratos   ();
+        lista.setVisible(true);
+    }//GEN-LAST:event_contratosCallActionPerformed
 
     /**
      * @param args the command line arguments

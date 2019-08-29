@@ -1,6 +1,6 @@
 package alg.jkl.system.models;
 
-public class Profissional { 
+public class Profissional extends Pessoa{ 
     private int id_profissional;
     private String cpf;
     private String nome;
@@ -14,28 +14,22 @@ public class Profissional {
         this.id_profissional = id_profissional;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-    
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getFuncao() {
         return funcao;
     }
 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
+    }
+
+    @Override
+    public boolean verificarDados() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void alterarDados(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

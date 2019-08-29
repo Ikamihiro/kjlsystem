@@ -132,7 +132,6 @@ public class Login extends javax.swing.JFrame {
         UsuarioDAO controller = new UsuarioDAO();
         String nome = nomeField.getText();
         String senha = senhaField.getText();
-        System.out.println(senha);
         Usuario user = controller.verificar(nome, senha);
         if(user != null) {
             Home home = new Home();
